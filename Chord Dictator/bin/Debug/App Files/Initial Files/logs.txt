@@ -1,10 +1,10 @@
-[25.08.2020 14:31:05] -> Program launched.
-[25.08.2020 14:31:07] -> Failed to parse string "" to int.
-[25.08.2020 14:31:07] -> New session started.
-[25.08.2020 14:31:08] -> Dictionary App Files/Dictionaries/chordList.txt is empty.
-[25.08.2020 14:31:13] -> Initial file changed to D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files\Dictionaries\test.txt
-[25.08.2020 14:31:14] -> Failed to parse string "" to int.
-[25.08.2020 14:31:17] -> New session started.
-[25.08.2020 14:31:23] -> Failed to load image. (Недопустимый URI-адрес: Слишком длинная строка URI.) 
-[25.08.2020 14:31:23] -> Failed to load sound. (Слишком длинный путь или имя файла. Полное имя файла должно содержать меньше 260 знаков, а имя каталога - меньше 248 знаков.) 
-[25.08.2020 14:31:31] -> Dictation finished successfuly.
+[25.08.2020 20:11:40] -> Program launched.
+[25.08.2020 20:13:36] -> Dictionary file changed to D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files\Dictionaries\chordList.txt
+[25.08.2020 20:13:37] -> LastDictionary setting added
+[25.08.2020 20:13:37] -> Last dictionary set, but created LastDirectory parameter first (D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files\Dictionaries\chordList.txt)
+[25.08.2020 20:14:46] -> Opened add/remove window.
+[25.08.2020 20:15:21] -> Added new element "".
+[25.08.2020 20:15:23] -> Failed to parse string "" to int.
+[25.08.2020 20:15:23] -> New session started.
+[25.08.2020 20:15:28] -> Failed to load sound. (Файл в папке D:\Tools\Interpreting\READYFILES\Angel 2.mp3 не является волновым файлом.) 
+[25.08.2020 20:15:34] -> Dictation finished successfuly.

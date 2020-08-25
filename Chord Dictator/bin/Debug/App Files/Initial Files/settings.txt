@@ -1,0 +1,2 @@
+LastDictionary D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files\Dictionaries\chordList.txt
+LastDictionary D:\Programming\Source>->Visual>Studio\Author>Apps\Chord>Dictator\Chord>Dictator\bin\Debug\App>Files\Dictionaries\test.txt

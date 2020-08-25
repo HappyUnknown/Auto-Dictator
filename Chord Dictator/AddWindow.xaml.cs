@@ -40,7 +40,7 @@ namespace Chord_Dictator
         }
         void WriteToLog(string message, string exmsg = "", string tip = "")
         {
-            if (!File.Exists(log)) File.Create(log);
+            if (!File.Exists(log)) File.Create(log).Close();
             File.AppendAllText(log, "[" + DateTime.Now + "] -> " + message);
             if (exmsg.Length > 0) File.AppendAllText(log, " (" + exmsg + ") ");
             if (tip.Length > 0) File.AppendAllText(log, "[Tip: " + tip.TrimEnd('.') + "]");
@@ -48,7 +48,7 @@ namespace Chord_Dictator
         }
         public void AddChord(string n, string i, string s)
         {
-            File.WriteAllText(dfp, n + " " + i + " " + s + Environment.NewLine);
+            File.WriteAllText(dfp, n + ">" + i + ">" + s + Environment.NewLine);
         }
         void CreateIfNoDl()
         {
@@ -62,7 +62,7 @@ namespace Chord_Dictator
             }
             if (!File.Exists(dfp))
             {
-                File.Create(dfp);
+                File.Create(dfp).Close();
                 WriteToLog("Initial dictionary file created.");
             }
         }
@@ -127,7 +127,7 @@ namespace Chord_Dictator
 
                 if (!tbName.Text.Contains('>') && !tbChordImgPath.Text.Contains('>') && !tbSoundPath.Text.Contains('>'))
                 {
-                    File.AppendAllText(dfp, tbName.Text.Replace(' ', '>') + " " + tbChordImgPath.Text.Replace(' ', '>') + " " + tbSoundPath.Text.Replace(' ', '>') + Environment.NewLine);
+                    File.AppendAllText(dfp, tbName.Text + ">" + tbChordImgPath.Text + ">" + tbSoundPath.Text + Environment.NewLine);
                     MessageBox.Show("Added \"" + tbName.Text + "\" element. Path: " + dfp);
                     imgChord.Source = null;
                     tbName.Text = string.Empty;
@@ -156,7 +156,7 @@ namespace Chord_Dictator
                 if (MessageBox.Show("Do you want to remove last element?", "Removing last", MessageBoxButton.YesNo) == MessageBoxResult.Yes && File.ReadAllLines(dfp).Length > 0)
                 {
                     List<string> content = File.ReadAllLines(dfp).ToList();
-                    MessageBox.Show("Last chord removed. - " + content[content.Count - 1].Split()[0].Replace('>', ' '));
+                    MessageBox.Show("Last chord removed. - " + content[content.Count - 1].Split('>')[0]);
                     content.RemoveAt(content.Count - 1);
                     File.WriteAllLines(dfp, content.ToArray());
                 }
@@ -193,7 +193,7 @@ namespace Chord_Dictator
                 {
                     if (!tbName.Text.Contains('>'))
                     {
-                        File.AppendAllText(dfp, tbName.Text.Replace(' ', '>') + " " + FileToBase64(tbChordImgPath.Text) + " " + FileToBase64(tbSoundPath.Text) + Environment.NewLine);
+                        File.AppendAllText(dfp, tbName.Text + ">" + FileToBase64(tbChordImgPath.Text) + ">" + FileToBase64(tbSoundPath.Text) + Environment.NewLine);
                         MessageBox.Show("Added \"" + tbName.Text + "\" chord.");
                         imgChord.Source = null;
                         tbName.Text = string.Empty;
