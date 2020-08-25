@@ -1,0 +1,4 @@
+A>(ЛЯ) App>Files/Initial>Files/defimage.png D:\Programming\Source>->Visual>Studio\Author>Apps\Chord>Dictator\Chord>Dictator\bin\Debug\App>Files\Audio\A.wav
+B>(СИ) App>Files/Initial>Files/defimage.png D:\Programming\Source>->Visual>Studio\Author>Apps\Chord>Dictator\Chord>Dictator\bin\Debug\App>Files\Audio\B.wav
+С>(ДО) App>Files/Initial>Files/defimage.png D:\Programming\Source>->Visual>Studio\Author>Apps\Chord>Dictator\Chord>Dictator\bin\Debug\App>Files\Audio\С.wav
+D>(РЕ) App>Files/Initial>Files/defimage.png D:\Programming\Source>->Visual>Studio\Author>Apps\Chord>Dictator\Chord>Dictator\bin\Debug\App>Files\Audio\D.wav

@@ -1,0 +1,20 @@
+[24.08.2020 17:51:34] -> Program launched.
+[24.08.2020 17:51:36] -> Failed to parse string "" to int.
+[24.08.2020 17:51:36] -> New session started.
+[24.08.2020 17:51:38] -> Dictionary App Files/Dictionaries/chordList.txt is empty.
+[24.08.2020 17:51:42] -> Initial file changed to D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files\Dictionaries\chords.txt
+[24.08.2020 17:51:43] -> Failed to parse string "" to int.
+[24.08.2020 17:51:43] -> New session started.
+[24.08.2020 17:51:48] -> Failed to load image. (Недопустимый URI: Невозможно определить формат URI.) 
+[24.08.2020 17:51:50] -> Failed to parse string "0,5" to int.
+[24.08.2020 17:51:50] -> New session started.
+[24.08.2020 17:51:55] -> Failed to load image. (Недопустимый URI: Невозможно определить формат URI.) 
+[24.08.2020 17:51:56] -> Failed to parse string "0.5" to int.
+[24.08.2020 17:51:56] -> New session started.
+[24.08.2020 17:52:01] -> Failed to load image. (Недопустимый URI: Невозможно определить формат URI.) 
+[24.08.2020 17:52:01] -> New session started.
+[24.08.2020 17:52:02] -> Failed to load image. (Недопустимый URI: Невозможно определить формат URI.) 
+[24.08.2020 17:52:03] -> Failed to load image. (Недопустимый URI: Невозможно определить формат URI.) 
+[24.08.2020 17:52:04] -> Failed to load image. (Недопустимый URI: Невозможно определить формат URI.) 
+[24.08.2020 17:52:05] -> Failed to load image. (Недопустимый URI: Невозможно определить формат URI.) 
+[24.08.2020 17:52:08] -> Dictation finished successfuly.

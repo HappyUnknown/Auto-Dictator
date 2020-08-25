@@ -1,0 +1,31 @@
+﻿<Window x:Class="Chord_Dictator.AddWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Chord_Dictator"
+        mc:Ignorable="d"
+        Title="AddWindow" Height="345" Width="266">
+    <Grid>
+        <StackPanel>
+            <WrapPanel>
+                <TextBox Name="tbName" Width="250" Height="20"/>
+            </WrapPanel>
+            <WrapPanel>
+                <StackPanel>
+                    <Image Width="200" Height="180" Name="imgChord"/>
+                    <TextBox Name="tbChordImgPath" Width="200" IsReadOnly="True"/>
+                </StackPanel>
+                <Button x:Name="btnConnImg" Width="50" Height="200" Content="+Image" Click="btnConnImg_Click"/>
+            </WrapPanel>
+            <WrapPanel>
+                <TextBox x:Name="tbSoundPath" Width="200" Height="30" IsReadOnly="True"/>
+                <Button x:Name="btnConnSound" Width="50" Height="30" Content="+Sound" Click="btnConnSound_Click"/>
+            </WrapPanel>
+            <WrapPanel>
+                <Button x:Name="btnAddChord" Content="Add new chord" Width="250" Height="30" Click="btnAddChord_Click"/>
+                <Button x:Name="btnRmLast" Click="btnRmLast_Click" Content="Remove last" Width="250" Height="30"/>
+            </WrapPanel>
+        </StackPanel>
+    </Grid>
+</Window>
