@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Media;
@@ -214,5 +215,68 @@ namespace Chord_Dictator
                 WriteToLog("Failed to change initial dictionary.", ex.Message);
             }
         }
+        #region Test
+        void StartPortable(object sender, EventArgs e)
+        {
+            int randomIndex = new Random().Next(0, chords.Count);
+            if (File.ReadAllLines(dfp).Length <= alreadyShown.Count && alreadyShown.Count != 0)
+            {
+                Dispatcher.Invoke(() => timer.Stop());
+                MessageBox.Show("Dictation finished successfuly.");
+                WriteToLog("Dictation finished successfuly.");
+                timer.Stop();
+                return;
+            }
+            while (!Unique(randomIndex))
+            {
+                randomIndex = new Random().Next(0, chords.Count);
+            }
+            alreadyShown.Add(randomIndex);
+            try
+            {
+                imgChord.Source = ByteToBitmap(Base64ToBytes(chords[randomIndex].imagePath));
+            }
+            catch (Exception ex)
+            {
+                WriteToLog("Failed to load image.", ex.Message);
+            }
+            tbChordName.Text = chords[randomIndex].name;
+            try
+            {
+                if (!mute)
+                {
+                    SoundPlayer sp = new SoundPlayer(chords[randomIndex].soundPath);
+                    sp.Play();
+                }
+            }
+            catch (Exception ex)
+            {
+                WriteToLog("Failed to load sound.", ex.Message);
+            }
+        }
+        byte[] Base64ToBytes(string rawbase64)
+        {
+            string base64str = rawbase64.Substring(rawbase64.IndexOf(',') + 1);
+            byte[] bytes = Convert.FromBase64String(base64str);
+            return bytes;
+        }
+        BitmapImage ByteToBitmap(byte[] imageData)
+        {
+            if (imageData == null || imageData.Length == 0) return null;
+            var image = new BitmapImage();
+            using (var mem = new MemoryStream(imageData))
+            {
+                mem.Position = 0;
+                image.BeginInit();
+                image.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.UriSource = null;
+                image.StreamSource = mem;
+                image.EndInit();
+            }
+            image.Freeze();
+            return image;
+        }
+        #endregion 
     }
 }

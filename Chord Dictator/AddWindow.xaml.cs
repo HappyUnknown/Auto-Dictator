@@ -171,36 +171,46 @@ namespace Chord_Dictator
         #region TEST
         void AddChordPortable()
         {
-            if (tbName.Text == "")
+            try
             {
-                MessageBox.Show("No name signed.");
-                return;
-            }
-            if (tbSoundPath.Text == "")
-            {
-                MessageBox.Show("No sound signed.");
-                return;
-            }
-            if (imgChord.Source == null || tbChordImgPath.Text == "")
-            {
-                MessageBox.Show("No image signed.");
-                return;
-            }
-            else
-            {
-                if (!tbName.Text.Contains('>'))
+
+                if (tbName.Text == "")
                 {
-                    File.AppendAllText(dfp, tbName.Text.Replace(' ', '>') + " " + FileToBase64(tbChordImgPath.Text) + " " + FileToBase64(tbSoundPath.Text) + Environment.NewLine);
-                    MessageBox.Show("Added \"" + tbName.Text + "\" chord.");
-                    imgChord.Source = null;
-                    tbName.Text = string.Empty;
-                    tbSoundPath.Text = string.Empty;
-                    tbChordImgPath.Text = string.Empty;
+                    MessageBox.Show("No name signed.");
+                    return;
+                }
+                if (tbSoundPath.Text == "")
+                {
+                    MessageBox.Show("No sound signed.");
+                    return;
+                }
+                if (imgChord.Source == null || tbChordImgPath.Text == "")
+                {
+                    MessageBox.Show("No image signed.");
+                    return;
                 }
                 else
                 {
-                    MessageBox.Show("\">\" program symbol used. Try removing it.");
+                    if (!tbName.Text.Contains('>'))
+                    {
+                        File.AppendAllText(dfp, tbName.Text.Replace(' ', '>') + " " + FileToBase64(tbChordImgPath.Text) + " " + FileToBase64(tbSoundPath.Text) + Environment.NewLine);
+                        MessageBox.Show("Added \"" + tbName.Text + "\" chord.");
+                        imgChord.Source = null;
+                        tbName.Text = string.Empty;
+                        tbSoundPath.Text = string.Empty;
+                        tbChordImgPath.Text = string.Empty;
+                    }
+                    else
+                    {
+                        WriteToLog("Failed to add chord due to \">\" was used.");
+                        MessageBox.Show("\">\" program symbol used. Try removing it.");
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                WriteToLog("Failed to add chord.", ex.Message, "Try recreating initial dictionary or trying again");
+                CreateIfNoDl();
             }
             Close();
         }
@@ -215,12 +225,6 @@ namespace Chord_Dictator
             var bytes = File.ReadAllBytes(path);
             var base64 = Convert.ToBase64String(bytes);
             return base64;
-        }
-        byte[] Base64ToBytes(string rawbase64)
-        {
-            string base64str = rawbase64.Substring(rawbase64.IndexOf(',') + 1);
-            byte[] bytes = Convert.FromBase64String(base64str);
-            return bytes;
         }
         #endregion
     }
