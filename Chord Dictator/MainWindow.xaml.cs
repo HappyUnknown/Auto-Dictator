@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Media;
 using System.Security.Cryptography.X509Certificates;
+using System.Security.Policy;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -232,13 +233,16 @@ namespace Chord_Dictator
             {
                 if (!mute)
                 {
-                    SoundPlayer sp = new SoundPlayer(chords[randomIndex].soundPath);
-                    sp.Play();
+                    MediaPlayer mp = new MediaPlayer();
+                    mp.Open(new Uri(chords[randomIndex].soundPath, UriKind.RelativeOrAbsolute));
+                    mp.Play();
+                    //SoundPlayer player = new SoundPlayer();
+                    //player.Play();
                 }
             }
             catch (Exception ex)
             {
-                WriteToLog("Failed to load sound.", ex.Message);
+                WriteToLog("Failed to load sound.", ex.Message + " Path: " + chords[randomIndex].soundPath);
             }
         }
         private void btnGoToAdd_Click(object sender, RoutedEventArgs e)
