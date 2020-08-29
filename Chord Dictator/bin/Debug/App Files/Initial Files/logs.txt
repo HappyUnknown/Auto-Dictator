@@ -1,10 +1,4 @@
-[28.08.2020 19:53:54] -> Program launched.
-[28.08.2020 19:54:03] -> Dictionary file changed to D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files\Dictionaries\Chords.txt
-[28.08.2020 19:54:03] -> LastDictionary setting added
-[28.08.2020 19:54:03] -> Last dictionary set, but created LastDirectory parameter first (D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files\Dictionaries\Chords.txt)
-[28.08.2020 19:54:03] -> Failed to parse string "" to int.
-[28.08.2020 19:54:03] -> New session started.
-[28.08.2020 19:54:17] -> Dictation finished successfuly.
-[28.08.2020 19:54:54] -> Failed to parse string "" to int.
-[28.08.2020 19:54:54] -> New session started.
-[28.08.2020 19:55:05] -> Dictation finished successfuly.
+[29.08.2020 22:59:55] -> Program launched.
+[29.08.2020 23:00:00] -> Failed to parse string "" to int.
+[29.08.2020 23:00:00] -> New session started.
+[29.08.2020 23:00:17] -> Dictation finished successfuly.

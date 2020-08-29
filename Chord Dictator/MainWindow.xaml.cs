@@ -88,16 +88,6 @@ namespace Chord_Dictator
                 }
             }
         }
-        string GetLastDictionary()
-        {
-            string[] settings = File.ReadAllLines(set);
-            foreach (string setting in settings)
-            {
-                string[] settingParts = setting.Split('>');
-                if (settingParts[0] == "LastDictionary") return settingParts[1];
-            }
-            return dfp;
-        }
         void WriteToLog(string message, string exmsg = "", string tip = "")
         {
             if (!File.Exists(log)) File.Create(log).Close();
@@ -113,6 +103,16 @@ namespace Chord_Dictator
             if (!spaces) foreach (string el in elems) str += el;
             return str;
         }
+        string GetLastDictionary()
+        {
+            string[] settings = File.ReadAllLines(set);
+            foreach (string setting in settings)
+            {
+                string[] settingParts = setting.Split('>');
+                if (settingParts[0] == "LastDictionary") return settingParts[1];
+            }
+            return dfp;
+        }
         void AddSetting(string setname, string definition = "-", int addbeforeidx = 0)
         {
             List<string> settings = File.ReadAllLines(set).ToList();
@@ -120,7 +120,7 @@ namespace Chord_Dictator
             {
                 if (setting.Split('>')[0] == setname) return;
             }
-            settings.Insert(addbeforeidx, setname.Replace('>', ' ') + " " + definition.Replace('>', ' '));
+            settings.Insert(addbeforeidx, setname.Replace('>', ' ') + ">" + definition.Replace('>', ' '));
             WriteToLog(setname + " setting added");
             File.WriteAllLines(set, settings.ToArray());
         }
@@ -175,7 +175,7 @@ namespace Chord_Dictator
                     Dispatcher.Invoke(() => timer.Start());
                     if (File.ReadAllText(dfp).TrimEnd(' ').Length == 0)
                     {
-                        MessageBox.Show("Dictionary is empty");
+                        MessageBox.Show(dfp + " is empty");
                         WriteToLog("Dictionary " + dfp + " is empty");
                         timer.Stop();
                         return;
@@ -192,8 +192,16 @@ namespace Chord_Dictator
             {
                 MessageBox.Show("Start failed.");
                 WriteToLog("Failed to reach dictionary file (" + dfp + ")", ex.Message);
-                if (MessageBox.Show("Do you want to create dictionary file?", "No such file", MessageBoxButton.YesNo) == MessageBoxResult.Yes) File.Create(dfp);
-                else return;
+                if (!File.Exists(dfp))
+                {
+                    if (MessageBox.Show("Do you want to create dictionary file?", "No such file", MessageBoxButton.YesNo) == MessageBoxResult.Yes) File.Create(dfp);
+                    else return;
+                }
+                else
+                {
+                    MessageBox.Show("Directory exists, but problem occured while starting. Try again.");
+                    WriteToLog("Directory exists, but launch terminated.", ex.Message, "Try again");
+                }
             }
         }
         bool Unique(int num)
@@ -326,8 +334,9 @@ namespace Chord_Dictator
             {
                 if (!mute)
                 {
-                    SoundPlayer sp = new SoundPlayer(chords[randomIndex].soundPath);
-                    sp.Play();
+                    MediaPlayer mp = new MediaPlayer();
+                    mp.Open(new Uri(chords[randomIndex].soundPath, UriKind.RelativeOrAbsolute));
+                    mp.Play();
                 }
             }
             catch (Exception ex)
