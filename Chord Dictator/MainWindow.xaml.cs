@@ -157,7 +157,7 @@ namespace Chord_Dictator
             if (rowidx >= filecont.Length) return false;
             string[] rowCont = filecont[rowidx].Split('>');
             WriteToLog("EditSettings", rowCont[0] + " definiton edited from " + rowCont[1] + " to " + definition);
-            filecont[rowidx] = rowCont[0] + " " + definition;
+            filecont[rowidx] = rowCont[0] + ">" + definition;
             File.WriteAllLines(set, filecont);
             return true;
         }
@@ -169,7 +169,7 @@ namespace Chord_Dictator
                 string[] rowCont = settings[i].Split('>');
                 if (rowCont[0] == rowName)
                 {
-                    settings[i] = rowCont[0] + " " + definition;
+                    settings[i] = rowCont[0] + ">" + definition;
                     File.WriteAllLines(set, settings);
                     return true;
                 }
