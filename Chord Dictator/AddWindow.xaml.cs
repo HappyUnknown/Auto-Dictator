@@ -37,20 +37,17 @@ namespace Chord_Dictator
             log = logs;
             defaultImage = defim;
             defaultAudio = defau;
-            WriteToLog("AddWindowConstructor", "Editing started.");
+            WriteToLog("Editing started.", "AddWindowConstructor");
         }
-        void WriteToLog(string functionName, string message, string exmsg = "", string tip = "")
+        void WriteToLog(string message, string functionName = "", string exmsg = "", string tip = "")
         {
             if (!File.Exists(log)) File.Create(log).Close();
-            File.AppendAllText(log, "[" + DateTime.Now + "] " + functionName + "() -> ");
-            File.AppendAllText(log, message);
+            File.AppendAllText(log, "[" + DateTime.Now + "] ");
+            if (functionName.Length > 0) File.AppendAllText(log, functionName + "()");
+            File.AppendAllText(log, " -> " + message);
             if (exmsg.Length > 0) File.AppendAllText(log, " (" + exmsg + ") ");
             if (tip.Length > 0) File.AppendAllText(log, "[Tip: " + tip.TrimEnd('.') + "]");
             File.AppendAllText(log, Environment.NewLine);
-        }
-        public void AddChord(string n, string i, string s)
-        {
-            File.WriteAllText(dfp, n + ">" + i + ">" + s + Environment.NewLine);
         }
         void CreateIfNoDl()
         {
@@ -65,7 +62,7 @@ namespace Chord_Dictator
             if (!File.Exists(dfp))
             {
                 File.Create(dfp).Close();
-                WriteToLog("CreateIfNoDl", "Initial dictionary file created.");
+                WriteToLog("Initial dictionary file created.", "CreateIfNoDl");
             }
         }
         private void btnConnImg_Click(object sender, RoutedEventArgs e)
@@ -83,7 +80,7 @@ namespace Chord_Dictator
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                WriteToLog("btnConnImg_Click", "Failed to connect image.", ex.Message);
+                WriteToLog("Failed to connect image.", "btnConnImg_Click", ex.Message);
             }
         }
         string GetFileName(string path)
@@ -127,48 +124,63 @@ namespace Chord_Dictator
         }
         private void btnAddChord_Click(object sender, RoutedEventArgs e)
         {
-            AddChord();
+            AddChord(tbName.Text, tbSoundPath.Text, tbChordImgPath.Text);
         }
-        void AddChord()
+        private void btnAddMoveChord_Click(object sender, RoutedEventArgs e)
+        {
+            string aupath = GetFileHome(defaultAudio) + GetFileName(tbSoundPath.Text);
+            string impath = GetFileHome(defaultImage) + GetFileName(tbChordImgPath.Text);
+            try
+            {
+                File.Copy(tbSoundPath.Text, aupath);
+                File.Copy(tbSoundPath.Text, impath);
+                AddChord(tbName.Text, aupath, impath);
+            }
+            catch (Exception ex)
+            {
+                WriteToLog("Troubles during moving files to program folder", "btnAddMoveChord_Click", ex.Message);
+            }
+        }
+        void AddChord(string name, string chordpath, string imagepath)
         {
             try
             {
-                if (tbName.Text == "")
+                if (name == "")
                 {
                     MessageBox.Show("No name signed. Rename please.");
                     return;
                 }
-                if (tbSoundPath.Text == "")
+                if (chordpath == "")
                 {
-                    tbSoundPath.Text = defaultAudio;
+                    chordpath = defaultAudio;
                     MessageBox.Show("No sound signed.");
                 }
                 if (imgChord.Source == null || tbChordImgPath.Text == "")
                 {
-                    tbChordImgPath.Text = defaultImage;
+                    imagepath = defaultImage;
                     MessageBox.Show("No image signed.");
                 }
 
-                if (!tbName.Text.Contains('>') && !tbChordImgPath.Text.Contains('>') && !tbSoundPath.Text.Contains('>'))
+                if (!name.Contains('>') && !imagepath.Contains('>') && !chordpath.Contains('>'))
                 {
-                    File.AppendAllText(dfp, tbName.Text + ">" + tbChordImgPath.Text + ">" + tbSoundPath.Text + Environment.NewLine);
-                    MessageBox.Show("Added \"" + tbName.Text + "\" element. Path: " + dfp);
+                    File.AppendAllText(dfp, name + ">" + imagepath + ">" + chordpath + Environment.NewLine);
+                    MessageBox.Show("Added \"" + name + "\" element. Path: " + dfp);
                     imgChord.Source = null;
                     tbName.Text = string.Empty;
                     tbSoundPath.Text = string.Empty;
                     tbChordImgPath.Text = string.Empty;
-                    WriteToLog("AddChord", "Added new element \"" + tbName.Text + "\".");
+                    WriteToLog("Added new element \"" + name + "\".", "AddChord");
                 }
                 else
                 {
                     MessageBox.Show("\">\" program symbol used. Try removing it.");
-                    WriteToLog("AddChord", "Program symbol used in dictionary addition.");
+                    WriteToLog("Program symbol used in dictionary addition.", "AddChord");
                 }
                 Close();
             }
             catch (Exception ex)
             {
-                WriteToLog("AddChord", "Failed to add chord.", ex.Message, "Try recreating initial dictionary or trying again");
+                WriteToLog("Failed to add chord.", "AddChord", ex.Message, "Try recreating initial dictionary or trying again");
                 CreateIfNoDl();
             }
         }
@@ -189,7 +201,7 @@ namespace Chord_Dictator
             {
                 MessageBox.Show("Can't remove");
                 CreateIfNoDl();
-                WriteToLog("Failed to remove last from dictionary.", ex.Message, "Your dictionary file was recreated, because program did not reach it. Try again.");
+                WriteToLog("Failed to remove last from dictionary.", "btnRmLast_Click", ex.Message, "Your dictionary file was recreated, because program did not reach it. Try again.");
             }
         }
         #region TEST
@@ -226,14 +238,14 @@ namespace Chord_Dictator
                     }
                     else
                     {
-                        WriteToLog("AddChordPortable", "Failed to add chord due to \">\" was used.");
+                        WriteToLog("Failed to add chord due to \">\" was used.", "AddChordPortable");
                         MessageBox.Show("\">\" program symbol used. Try removing it.");
                     }
                 }
             }
             catch (Exception ex)
             {
-                WriteToLog("AddChordPortable", "Failed to add chord.", ex.Message, "Try recreating initial dictionary or trying again");
+                WriteToLog("Failed to add chord.", "AddChordPortable", ex.Message, "Try recreating initial dictionary or trying again");
                 CreateIfNoDl();
             }
             Close();

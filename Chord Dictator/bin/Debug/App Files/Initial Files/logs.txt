@@ -1,5 +1,6 @@
-[30.08.2020 16:29:35] MainWindowConstructor() -> Program launched.
-[30.08.2020 16:29:44] btnChangeInit_Click() -> Dictionary file changed to D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files\Dictionaries\chordList.txt
-[30.08.2020 16:29:44] AddSetting() -> LastDictionary setting added
-[30.08.2020 16:29:44] btnChangeInit_Click() -> Last dictionary set, but created LastDirectory parameter first (D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files\Dictionaries\chordList.txt)
-[30.08.2020 16:29:46] btnChangeInit_Click() -> Failed to change dictionary. (Индекс находился вне границ массива.) 
+[30.08.2020 18:06:03] MainWindowConstructor() -> Program launched.
+[30.08.2020 18:06:03] GetLastDictionary() -> LastDictionary setting found.
+[30.08.2020 18:06:09] btnChangeInit_Click() -> Dictionary file changed to D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files\Dictionaries\test.txt
+[30.08.2020 18:06:09] btnChangeInit_Click() -> Last dictionary set (D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files\Dictionaries\test.txt)
+[30.08.2020 18:06:13] AddWindowConstructor() -> Editing started.
+[30.08.2020 18:06:13] btnGoToAdd_Click() -> Opened add/remove window.

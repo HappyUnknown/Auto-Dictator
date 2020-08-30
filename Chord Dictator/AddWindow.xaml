@@ -23,7 +23,7 @@
                 <Button x:Name="btnConnSound" Width="50" Height="30" Content="+Sound" Click="btnConnSound_Click"/>
             </WrapPanel>
             <WrapPanel>
-                <Button x:Name="btnAddChord" Content="Add new chord" Width="250" Height="30" Click="btnAddChord_Click"/>
+                <Button x:Name="btnAddChord" Content="Add new chord" Width="250" Height="30" Click="btnAddMoveChord_Click"/>
                 <Button x:Name="btnRmLast" Click="btnRmLast_Click" Content="Remove last" Width="250" Height="30"/>
             </WrapPanel>
         </StackPanel>
