@@ -1,4 +1,5 @@
-[30.08.2020 16:27:25] MainWindowConstructor() -> Program launched.
-[30.08.2020 16:27:31] btnChangeInit_Click() -> Dictionary file changed to D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files\Dictionaries\hieroglyphList — копия.txt
-[30.08.2020 16:27:31] btnChangeInit_Click() -> Last dictionary set (D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files\Dictionaries\hieroglyphList — копия.txt)
-[30.08.2020 16:27:33] btnChangeInit_Click() -> Failed to change dictionary. (Индекс находился вне границ массива.) 
+[30.08.2020 16:29:35] MainWindowConstructor() -> Program launched.
+[30.08.2020 16:29:44] btnChangeInit_Click() -> Dictionary file changed to D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files\Dictionaries\chordList.txt
+[30.08.2020 16:29:44] AddSetting() -> LastDictionary setting added
+[30.08.2020 16:29:44] btnChangeInit_Click() -> Last dictionary set, but created LastDirectory parameter first (D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files\Dictionaries\chordList.txt)
+[30.08.2020 16:29:46] btnChangeInit_Click() -> Failed to change dictionary. (Индекс находился вне границ массива.) 
