@@ -84,6 +84,28 @@ namespace Chord_Dictator
                 WriteToLog("Failed to connect image.", ex.Message);
             }
         }
+        string GetFileName(string path)
+        {
+            for (int i = path.Length - 1; i >= 0; i++)
+            {
+                if (path[i] == '\\')
+                {
+                    return path.Substring(i, path.Length - i);
+                }
+            }
+            return "NO_NAME";
+        }
+        string GetFileHome(string path)
+        {
+            for (int i = path.Length - 1; i >= 0; i++)
+            {
+                if (path[i] == '\\')
+                {
+                    return path.Substring(0, i);
+                }
+            }
+            return "NO_PATH";
+        }
         private void btnConnSound_Click(object sender, RoutedEventArgs e)
         {
             try

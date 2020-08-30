@@ -1,4 +1,1 @@
-[29.08.2020 22:59:55] -> Program launched.
-[29.08.2020 23:00:00] -> Failed to parse string "" to int.
-[29.08.2020 23:00:00] -> New session started.
-[29.08.2020 23:00:17] -> Dictation finished successfuly.
+[30.08.2020 0:59:38] -> Program launched.
