@@ -37,11 +37,13 @@ namespace Chord_Dictator
             log = logs;
             defaultImage = defim;
             defaultAudio = defau;
+            WriteToLog("AddWindowConstructor", "Editing started.");
         }
-        void WriteToLog(string message, string exmsg = "", string tip = "")
+        void WriteToLog(string functionName, string message, string exmsg = "", string tip = "")
         {
             if (!File.Exists(log)) File.Create(log).Close();
-            File.AppendAllText(log, "[" + DateTime.Now + "] -> " + message);
+            File.AppendAllText(log, "[" + DateTime.Now + "] " + functionName + "() -> ");
+            File.AppendAllText(log, message);
             if (exmsg.Length > 0) File.AppendAllText(log, " (" + exmsg + ") ");
             if (tip.Length > 0) File.AppendAllText(log, "[Tip: " + tip.TrimEnd('.') + "]");
             File.AppendAllText(log, Environment.NewLine);
@@ -63,7 +65,7 @@ namespace Chord_Dictator
             if (!File.Exists(dfp))
             {
                 File.Create(dfp).Close();
-                WriteToLog("Initial dictionary file created.");
+                WriteToLog("CreateIfNoDl", "Initial dictionary file created.");
             }
         }
         private void btnConnImg_Click(object sender, RoutedEventArgs e)
@@ -81,7 +83,7 @@ namespace Chord_Dictator
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                WriteToLog("Failed to connect image.", ex.Message);
+                WriteToLog("btnConnImg_Click", "Failed to connect image.", ex.Message);
             }
         }
         string GetFileName(string path)
@@ -155,18 +157,18 @@ namespace Chord_Dictator
                     tbName.Text = string.Empty;
                     tbSoundPath.Text = string.Empty;
                     tbChordImgPath.Text = string.Empty;
-                    WriteToLog("Added new element \"" + tbName.Text + "\".");
+                    WriteToLog("AddChord", "Added new element \"" + tbName.Text + "\".");
                 }
                 else
                 {
                     MessageBox.Show("\">\" program symbol used. Try removing it.");
-                    WriteToLog("Program symbol used in dictionary addition.");
+                    WriteToLog("AddChord", "Program symbol used in dictionary addition.");
                 }
                 Close();
             }
             catch (Exception ex)
             {
-                WriteToLog("Failed to add chord.", ex.Message, "Try recreating initial dictionary or trying again");
+                WriteToLog("AddChord", "Failed to add chord.", ex.Message, "Try recreating initial dictionary or trying again");
                 CreateIfNoDl();
             }
         }
@@ -224,14 +226,14 @@ namespace Chord_Dictator
                     }
                     else
                     {
-                        WriteToLog("Failed to add chord due to \">\" was used.");
+                        WriteToLog("AddChordPortable", "Failed to add chord due to \">\" was used.");
                         MessageBox.Show("\">\" program symbol used. Try removing it.");
                     }
                 }
             }
             catch (Exception ex)
             {
-                WriteToLog("Failed to add chord.", ex.Message, "Try recreating initial dictionary or trying again");
+                WriteToLog("AddChordPortable", "Failed to add chord.", ex.Message, "Try recreating initial dictionary or trying again");
                 CreateIfNoDl();
             }
             Close();

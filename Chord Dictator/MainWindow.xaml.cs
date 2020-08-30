@@ -43,7 +43,7 @@ namespace Chord_Dictator
             InitializeComponent();
             InitTimer();
             File.WriteAllText(log, "");
-            WriteToLog("Program launched.");
+            WriteToLog("MainWindowConstructor", "Program launched.");
             dfp = GetLastDictionary();
         }
         struct Chord
@@ -68,7 +68,7 @@ namespace Chord_Dictator
             int num;
             if (!int.TryParse(str, out num))
             {
-                WriteToLog("Failed to parse string \"" + str + "\" to int.");
+                WriteToLog("StrToInt", "Failed to parse string \"" + str + "\" to int.");
                 return 5;
             }
             return num;
@@ -88,10 +88,11 @@ namespace Chord_Dictator
                 }
             }
         }
-        void WriteToLog(string message, string exmsg = "", string tip = "")
+        void WriteToLog(string functionName, string message, string exmsg = "", string tip = "")
         {
             if (!File.Exists(log)) File.Create(log).Close();
-            File.AppendAllText(log, "[" + DateTime.Now + "] -> " + message);
+            File.AppendAllText(log, "[" + DateTime.Now + "] " + functionName + "() -> ");
+            File.AppendAllText(log, message);
             if (exmsg.Length > 0) File.AppendAllText(log, " (" + exmsg + ") ");
             if (tip.Length > 0) File.AppendAllText(log, "[Tip: " + tip.TrimEnd('.') + "]");
             File.AppendAllText(log, Environment.NewLine);
@@ -103,6 +104,28 @@ namespace Chord_Dictator
             if (!spaces) foreach (string el in elems) str += el;
             return str;
         }
+        string GetFileName(string path)
+        {
+            for (int i = path.Length - 1; i >= 0; i++)
+            {
+                if (path[i] == '\\')
+                {
+                    return path.Substring(i, path.Length - i);
+                }
+            }
+            return "NO_NAME";
+        }
+        string GetFileHome(string path)
+        {
+            for (int i = path.Length - 1; i >= 0; i++)
+            {
+                if (path[i] == '\\')
+                {
+                    return path.Substring(0, i);
+                }
+            }
+            return "NO_PATH";
+        }
         string GetLastDictionary()
         {
             string[] settings = File.ReadAllLines(set);
@@ -113,6 +136,10 @@ namespace Chord_Dictator
             }
             return dfp;
         }
+        string[] GetSettings()
+        {
+            return File.ReadAllLines(set);
+        }
         void AddSetting(string setname, string definition = "-", int addbeforeidx = 0)
         {
             List<string> settings = File.ReadAllLines(set).ToList();
@@ -121,7 +148,7 @@ namespace Chord_Dictator
                 if (setting.Split('>')[0] == setname) return;
             }
             settings.Insert(addbeforeidx, setname.Replace('>', ' ') + ">" + definition.Replace('>', ' '));
-            WriteToLog(setname + " setting added");
+            WriteToLog("AddSetting", setname + " setting added");
             File.WriteAllLines(set, settings.ToArray());
         }
         bool EditSettings(int rowidx, string definition)
@@ -129,7 +156,7 @@ namespace Chord_Dictator
             string[] filecont = File.ReadAllLines(set);
             if (rowidx >= filecont.Length) return false;
             string[] rowCont = filecont[rowidx].Split('>');
-            WriteToLog(rowCont[0] + " definiton edited from " + rowCont[1] + " to " + definition);
+            WriteToLog("EditSettings", rowCont[0] + " definiton edited from " + rowCont[1] + " to " + definition);
             filecont[rowidx] = rowCont[0] + " " + definition;
             File.WriteAllLines(set, filecont);
             return true;
@@ -143,16 +170,11 @@ namespace Chord_Dictator
                 if (rowCont[0] == rowName)
                 {
                     settings[i] = rowCont[0] + " " + definition;
-                    WriteToLog(rowName + " definiton edited from " + rowCont[1] + " to " + definition);
                     File.WriteAllLines(set, settings);
                     return true;
                 }
             }
             return false;
-        }
-        string[] GetSettings()
-        {
-            return File.ReadAllLines(set);
         }
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
@@ -169,14 +191,14 @@ namespace Chord_Dictator
                     currChord = rawChords[i].Split('>');
                     chords.Add(new Chord(currChord[0], currChord[1], currChord[2]));
                 }
-                WriteToLog("New session started.");
+                WriteToLog("btnStart_Click", "New session started.");
                 try
                 {
                     Dispatcher.Invoke(() => timer.Start());
                     if (File.ReadAllText(dfp).TrimEnd(' ').Length == 0)
                     {
                         MessageBox.Show(dfp + " is empty");
-                        WriteToLog("Dictionary " + dfp + " is empty");
+                        WriteToLog("btnStart_Click", "Dictionary " + dfp + " is empty");
                         timer.Stop();
                         return;
                     }
@@ -185,13 +207,13 @@ namespace Chord_Dictator
                 catch (Exception ex)
                 {
                     MessageBox.Show("Start failed.");
-                    WriteToLog("Failed to start timer", ex.Message);
+                    WriteToLog("btnStart_Click", "Failed to start timer", ex.Message, "Try again");
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Start failed.");
-                WriteToLog("Failed to reach dictionary file (" + dfp + ")", ex.Message);
+                WriteToLog("btnStart_Click", "Failed to reach dictionary file (" + dfp + ")", ex.Message);
                 if (!File.Exists(dfp))
                 {
                     if (MessageBox.Show("Do you want to create dictionary file?", "No such file", MessageBoxButton.YesNo) == MessageBoxResult.Yes) File.Create(dfp);
@@ -200,7 +222,7 @@ namespace Chord_Dictator
                 else
                 {
                     MessageBox.Show("Directory exists, but problem occured while starting. Try again.");
-                    WriteToLog("Directory exists, but launch terminated.", ex.Message, "Try again");
+                    WriteToLog("btnStart_Click", "Directory exists, but launch terminated.", ex.Message, "Try again");
                 }
             }
         }
@@ -219,7 +241,7 @@ namespace Chord_Dictator
             {
                 Dispatcher.Invoke(() => timer.Stop());
                 MessageBox.Show("Dictation finished successfuly.");
-                WriteToLog("Dictation finished successfuly.");
+                WriteToLog("Start", "Dictation finished successfuly.");
                 timer.Stop();
                 return;
             }
@@ -234,7 +256,7 @@ namespace Chord_Dictator
             }
             catch (Exception ex)
             {
-                WriteToLog("Failed to load image.", ex.Message);
+                WriteToLog("Start", "Failed to load image.", ex.Message);
             }
             tbChordName.Text = chords[randomIndex].name;
             try
@@ -256,7 +278,7 @@ namespace Chord_Dictator
         private void btnGoToAdd_Click(object sender, RoutedEventArgs e)
         {
             AddWindow window = new AddWindow(dfp, log, defaultImage, defaultAudio);
-            WriteToLog("Opened add/remove window.");
+            WriteToLog("btnGoToAdd_Click", "Opened add/remove window.");
             window.ShowDialog();
         }
         private void btnChangeInit_Click(object sender, RoutedEventArgs e)
@@ -271,37 +293,39 @@ namespace Chord_Dictator
                     {
                         dfp = ofd.FileName;
                         MessageBox.Show("Dictionary file changed to " + dfp);
-                        WriteToLog("Dictionary file changed to " + dfp);
+                        WriteToLog("btnChangeInit_Click", "Dictionary file changed to " + dfp);
                         btnGoToAdd.ToolTip = "All added items will be saved to " + dfp;
                         if (!File.Exists(set)) File.Create(set).Close();
                         try
                         {
                             if (EditSettings("LastDictionary", ofd.FileName))
                             {
-                                WriteToLog("Last dictionary set (" + ofd.FileName + ")");
+                                EditSettings("LastDictionary", ofd.FileName);
+                                WriteToLog("btnChangeInit_Click", "Last dictionary set (" + ofd.FileName + ")");
                             }
                             else
                             {
                                 AddSetting("LastDictionary", ofd.FileName);
-                                WriteToLog("Last dictionary set, but created LastDirectory parameter first (" + ofd.FileName + ")");
+                                WriteToLog("btnChangeInit_Click", "Last dictionary set, but created LastDirectory parameter first (" + ofd.FileName + ")");
                             }
                         }
                         catch (Exception ex)
                         {
-                            WriteToLog("Initial dictionary wasn't changed", ex.Message, "Try choosing txt file.");
+                            WriteToLog("btnChangeInit_Click", "Initial dictionary wasn't changed", ex.Message, "Try choosing txt file.");
                         }
                     }
                     else
                     {
-                        WriteToLog("Failed to change dictionary. File type does not match.");
-                        MessageBox.Show("File type does not match.");
+                        WriteToLog("btnChangeInit_Click", "Failed to change dictionary. File type does not match.");
+                        MessageBox.Show("File type does not match. Choose txt.");
                     }
                 }
+                MessageBox.Show(GetFileName(ofd.FileName));
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                WriteToLog("Failed to change dictionary.", ex.Message);
+                WriteToLog("btnChangeInit_Click", "Failed to change dictionary.", ex.Message);
             }
         }
         #region Test
@@ -312,7 +336,7 @@ namespace Chord_Dictator
             {
                 Dispatcher.Invoke(() => timer.Stop());
                 MessageBox.Show("Dictation finished successfuly.");
-                WriteToLog("Dictation finished successfuly.");
+                WriteToLog("StartPortable", "Dictation finished successfuly.");
                 timer.Stop();
                 return;
             }
@@ -327,7 +351,7 @@ namespace Chord_Dictator
             }
             catch (Exception ex)
             {
-                WriteToLog("Failed to load image.", ex.Message);
+                WriteToLog("StartPortable", "Failed to load image.", ex.Message);
             }
             tbChordName.Text = chords[randomIndex].name;
             try
@@ -341,7 +365,7 @@ namespace Chord_Dictator
             }
             catch (Exception ex)
             {
-                WriteToLog("Failed to load sound.", ex.Message);
+                WriteToLog("StartPortable", "Failed to load sound.", ex.Message);
             }
         }
         byte[] Base64ToBytes(string rawbase64)
