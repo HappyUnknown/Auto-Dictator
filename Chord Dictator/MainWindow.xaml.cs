@@ -323,7 +323,7 @@ namespace Chord_Dictator
                     if (ofd.FileName.Substring(ofd.FileName.Length - 4, 4) == ".txt")
                     {
                         dfp = dictionaryPath + GetFileName(ofd.FileName);
-                        if (!File.Exists(dfp)) File.Copy(ofd.FileName, dfp); else { MessageBox.Show("Check logs."); WriteToLog("File already exists in root folder. [Tip: Delete it or rename.]"); }
+                        if (!File.Exists(dfp)) File.Copy(ofd.FileName, dfp); else { MessageBox.Show("Check logs."); WriteToLog("File chosen was located in root folder, so it wasn't copied. [Path: " + ofd.FileName + "]"); }
                         FileOk(true);
                         RemoveEmptyEntries();
 
@@ -373,7 +373,7 @@ namespace Chord_Dictator
                     if (ofd.FileName.Substring(ofd.FileName.Length - 4, 4) == ".txt")
                     {
                         dfp = dictionaryPath + GetFileName(ofd.FileName);
-                        if (!File.Exists(dfp)) File.Copy(ofd.FileName, dfp); else { MessageBox.Show("Check logs."); WriteToLog("File already exists in root folder. [Tip: Delete it or rename.]"); }
+                        if (!File.Exists(dfp)) File.Copy(ofd.FileName, dfp); else { MessageBox.Show("Check logs."); WriteToLog("File chosen was located in root folder, so it wasn't copied. [Path: " + ofd.FileName + "]"); }
                         FileOk(true);
                         RemoveEmptyEntries();
 
