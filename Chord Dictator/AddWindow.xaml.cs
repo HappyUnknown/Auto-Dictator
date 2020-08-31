@@ -55,9 +55,9 @@ namespace Chord_Dictator
         {
             string[] filelines = File.ReadAllLines(dfp);
             foreach (string line in filelines)
-                if (line.Split('>').Length != 3 && line.Trim(' ').Length > 0)
+                if (line.Split('>').Length != 3 && line.Length > 0)
                 {
-                    if(writelog)WriteToLog("Row must contain 2 '>' [Path: " + dfp + "]");
+                    if (writelog) WriteToLog("Row must contain 2 '>' [Path: " + dfp + "]");
                     return false;
                 }
             return true;

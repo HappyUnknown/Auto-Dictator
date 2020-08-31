@@ -1,5 +1,8 @@
-[31.08.2020 22:42:48] MainWindowConstructor()-> Program launched.
-[31.08.2020 22:42:48] GetLastDictionary()-> LastDictionary setting found.
-[31.08.2020 22:44:24] -> File already exists in root folder. [Tip: Delete it or rename.]
-[31.08.2020 22:44:26] btnChangeInit_Click()-> Dictionary file is now App Files/Dictionaries/chords.txt
-[31.08.2020 22:44:26] btnChangeInit_Click()-> Last dictionary set (App Files/Dictionaries/chords.txt)
+[31.08.2020 22:50:30] MainWindowConstructor()-> Program launched.
+[31.08.2020 22:50:31] GetLastDictionary()-> LastDictionary setting found.
+[31.08.2020 22:50:38] -> File already exists in root folder. [Tip: Delete it or rename.]
+[31.08.2020 22:50:40] btnChangeInit_Click()-> Dictionary file is now App Files/Dictionaries/chords.txt
+[31.08.2020 22:50:40] btnChangeInit_Click()-> Last dictionary set (App Files/Dictionaries/chords.txt)
+[31.08.2020 22:51:27] -> File already exists in root folder. [Tip: Delete it or rename.]
+[31.08.2020 22:51:28] btnChangeInit_Click()-> Dictionary file is now App Files/Dictionaries/chords.txt
+[31.08.2020 22:51:28] btnChangeInit_Click()-> Last dictionary set (App Files/Dictionaries/chords.txt)

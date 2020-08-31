@@ -78,12 +78,21 @@ namespace Chord_Dictator
         {
             string[] filelines = File.ReadAllLines(dfp);
             foreach (string line in filelines)
-                if (line.Split('>').Length != 3 && line.Trim(' ').Length > 0)
+                if (line.Split('>').Length != 3 && line.Length > 0)
                 {
                     if (writelog) WriteToLog("Row must contain 2 '>' [Path: " + dfp + "]");
                     return false;
                 }
             return true;
+        }
+        void RemoveEmptyEntries()
+        {
+            string[] filelines = File.ReadAllLines(dfp);
+            for (int i = 0; i < filelines.Length; i++)
+            {
+                filelines[i] = filelines[i].Replace("  ", " ").Replace("  ", " ");
+            }
+            File.WriteAllLines(dfp, filelines);
         }
         void CreateIfNoDf()
         {
@@ -316,6 +325,7 @@ namespace Chord_Dictator
                         dfp = dictionaryPath + GetFileName(ofd.FileName);
                         if (!File.Exists(dfp)) File.Copy(ofd.FileName, dfp); else { MessageBox.Show("Check logs."); WriteToLog("File already exists in root folder. [Tip: Delete it or rename.]"); }
                         FileOk(true);
+                        RemoveEmptyEntries();
 
                         MessageBox.Show("Dictionary file is now " + dfp);
                         WriteToLog("Dictionary file is now " + dfp, "btnChangeInit_Click");
@@ -365,6 +375,7 @@ namespace Chord_Dictator
                         dfp = dictionaryPath + GetFileName(ofd.FileName);
                         if (!File.Exists(dfp)) File.Copy(ofd.FileName, dfp); else { MessageBox.Show("Check logs."); WriteToLog("File already exists in root folder. [Tip: Delete it or rename.]"); }
                         FileOk(true);
+                        RemoveEmptyEntries();
 
                         MessageBox.Show("Dictionary file is now " + dfp);
                         WriteToLog("Dictionary file is now " + dfp, "btnChangeInit_Click");
