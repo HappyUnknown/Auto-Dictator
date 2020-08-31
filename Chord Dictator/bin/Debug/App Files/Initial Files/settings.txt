@@ -1,1 +1,1 @@
-LastDictionary>App Files/Dictionaries/Chords.txt
+LastDictionary>App Files/Dictionaries/chords.txt

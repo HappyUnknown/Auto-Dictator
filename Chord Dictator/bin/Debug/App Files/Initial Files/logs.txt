@@ -1,7 +1,5 @@
-[31.08.2020 22:30:16] MainWindowConstructor()-> Program launched.
-[31.08.2020 22:30:16] GetLastDictionary()-> LastDictionary setting found.
-[31.08.2020 22:30:23] btnChangeInit_Click()-> Dictionary file is now App Files/Dictionaries/Chords.txt
-[31.08.2020 22:30:23] btnChangeInit_Click()-> Last dictionary set (App Files/Dictionaries/Chords.txt)
-[31.08.2020 22:30:25] StrToInt()-> Failed to parse string "" to int.
-[31.08.2020 22:30:25] btnStart_Click()-> New session started.
-[31.08.2020 22:30:36] Start()-> Dictation finished successfuly.
+[31.08.2020 22:42:48] MainWindowConstructor()-> Program launched.
+[31.08.2020 22:42:48] GetLastDictionary()-> LastDictionary setting found.
+[31.08.2020 22:44:24] -> File already exists in root folder. [Tip: Delete it or rename.]
+[31.08.2020 22:44:26] btnChangeInit_Click()-> Dictionary file is now App Files/Dictionaries/chords.txt
+[31.08.2020 22:44:26] btnChangeInit_Click()-> Last dictionary set (App Files/Dictionaries/chords.txt)
