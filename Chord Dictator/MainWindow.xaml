@@ -9,8 +9,8 @@
     <Grid>
         <WrapPanel>
             <StackPanel>
-                <TextBox x:Name="tbChordName" Height="40" IsReadOnly="True" FontSize="30"/>
-                <Image Name="imgChord" Height="200" Width="200"/>
+                <TextBox x:Name="tbElementName" Height="40" IsReadOnly="True" FontSize="30"/>
+                <Image Name="imgElement" Height="200" Width="200"/>
                 <Button Name="btnStart" Height="50" Width="200" Click="btnStart_Click" Content="Run"/>
                 <TextBox Name="tbDelay" Height="20" ToolTip="Default delay - 10 seconds."/>
                 <WrapPanel>

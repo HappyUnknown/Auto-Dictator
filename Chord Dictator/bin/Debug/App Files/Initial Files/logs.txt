@@ -1,34 +1,7 @@
-[31.08.2020 17:50:19] MainWindowConstructor() -> Program launched.
-[31.08.2020 17:50:19] GetLastDictionary() -> LastDictionary setting found.
-[31.08.2020 17:50:36] AddWindowConstructor() -> Editing started.
-[31.08.2020 17:50:36] btnGoToAdd_Click() -> Opened add/remove window.
-[31.08.2020 17:51:39] btnAddMoveChord_Click() -> Troubles during moving files to program folder. (Файл "NO_PATHelfen 1.mp3" уже существует.) 
-[31.08.2020 17:51:39] btnAddMoveChord_Click() -> New image path (copy) : NO_PATHelfen 1.mp3
-[31.08.2020 17:51:39] btnAddMoveChord_Click() -> New audio path (copy) : NO_PATHAG339.png
-[31.08.2020 17:51:43] btnAddMoveChord_Click() -> Troubles during moving files to program folder. (Файл "NO_PATHelfen 1.mp3" уже существует.) 
-[31.08.2020 17:51:43] btnAddMoveChord_Click() -> New image path (copy) : NO_PATHelfen 1.mp3
-[31.08.2020 17:51:43] btnAddMoveChord_Click() -> New audio path (copy) : NO_PATHAG339.png
-[31.08.2020 17:51:47] btnAddMoveChord_Click() -> Troubles during moving files to program folder. (Файл "NO_PATHelfen 1.mp3" уже существует.) 
-[31.08.2020 17:51:47] btnAddMoveChord_Click() -> New image path (copy) : NO_PATHelfen 1.mp3
-[31.08.2020 17:51:47] btnAddMoveChord_Click() -> New audio path (copy) : NO_PATHAG339.png
-[31.08.2020 17:51:50] btnAddMoveChord_Click() -> Troubles during moving files to program folder. (Файл "NO_PATHelfen 1.mp3" уже существует.) 
-[31.08.2020 17:51:50] btnAddMoveChord_Click() -> New image path (copy) : NO_PATHelfen 1.mp3
-[31.08.2020 17:51:50] btnAddMoveChord_Click() -> New audio path (copy) : NO_PATHAG339.png
-[31.08.2020 17:51:53] btnAddMoveChord_Click() -> Troubles during moving files to program folder. (Файл "NO_PATHelfen 1.mp3" уже существует.) 
-[31.08.2020 17:51:53] btnAddMoveChord_Click() -> New image path (copy) : NO_PATHelfen 1.mp3
-[31.08.2020 17:51:53] btnAddMoveChord_Click() -> New audio path (copy) : NO_PATHAG339.png
-[31.08.2020 17:51:56] btnAddMoveChord_Click() -> Troubles during moving files to program folder. (Файл "NO_PATHelfen 1.mp3" уже существует.) 
-[31.08.2020 17:51:56] btnAddMoveChord_Click() -> New image path (copy) : NO_PATHelfen 1.mp3
-[31.08.2020 17:51:56] btnAddMoveChord_Click() -> New audio path (copy) : NO_PATHAG339.png
-[31.08.2020 17:51:59] btnAddMoveChord_Click() -> Troubles during moving files to program folder. (Файл "NO_PATHelfen 1.mp3" уже существует.) 
-[31.08.2020 17:52:00] btnAddMoveChord_Click() -> New image path (copy) : NO_PATHelfen 1.mp3
-[31.08.2020 17:52:00] btnAddMoveChord_Click() -> New audio path (copy) : NO_PATHAG339.png
-[31.08.2020 17:52:06] btnAddMoveChord_Click() -> Troubles during moving files to program folder. (Файл "NO_PATHelfen 1.mp3" уже существует.) 
-[31.08.2020 17:52:06] btnAddMoveChord_Click() -> New image path (copy) : NO_PATHelfen 1.mp3
-[31.08.2020 17:52:06] btnAddMoveChord_Click() -> New audio path (copy) : NO_PATHAG339.png
-[31.08.2020 17:52:09] btnAddMoveChord_Click() -> Troubles during moving files to program folder. (Файл "NO_PATHelfen 1.mp3" уже существует.) 
-[31.08.2020 17:52:09] btnAddMoveChord_Click() -> New image path (copy) : NO_PATHelfen 1.mp3
-[31.08.2020 17:52:09] btnAddMoveChord_Click() -> New audio path (copy) : NO_PATHAG339.png
-[31.08.2020 17:52:12] btnAddMoveChord_Click() -> Troubles during moving files to program folder. (Файл "NO_PATHelfen 1.mp3" уже существует.) 
-[31.08.2020 17:52:13] btnAddMoveChord_Click() -> New image path (copy) : NO_PATHelfen 1.mp3
-[31.08.2020 17:52:13] btnAddMoveChord_Click() -> New audio path (copy) : NO_PATHAG339.png
+[31.08.2020 18:13:30] MainWindowConstructor() -> Program launched.
+[31.08.2020 18:13:30] GetLastDictionary() -> LastDictionary setting found.
+[31.08.2020 18:13:35] AddWindowConstructor() -> Editing started.
+[31.08.2020 18:13:35] btnGoToAdd_Click() -> Opened add/remove window.
+[31.08.2020 18:13:53] AddElement() -> Added new element "ffffffffff".
+[31.08.2020 18:13:53] btnAddMoveElement_Click() -> New image path (copy) : App Files/Audio/elfen 1.mp3
+[31.08.2020 18:13:53] btnAddMoveElement_Click() -> New audio path (copy) : App Files/Images/Anime-akiyama-yukari-Girls-und-Panzer-Anime-Ero-Swim-6023022.png

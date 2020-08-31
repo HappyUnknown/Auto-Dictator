@@ -13,8 +13,8 @@
             </WrapPanel>
             <WrapPanel>
                 <StackPanel>
-                    <Image Width="200" Height="180" Name="imgChord"/>
-                    <TextBox Name="tbChordImgPath" Width="200" IsReadOnly="True"/>
+                    <Image Width="200" Height="180" Name="imgElement"/>
+                    <TextBox Name="tbElementImgPath" Width="200" IsReadOnly="True"/>
                 </StackPanel>
                 <Button x:Name="btnConnImg" Width="50" Height="200" Content="+Image" Click="btnConnImg_Click"/>
             </WrapPanel>
@@ -23,7 +23,7 @@
                 <Button x:Name="btnConnSound" Width="50" Height="30" Content="+Sound" Click="btnConnSound_Click"/>
             </WrapPanel>
             <WrapPanel>
-                <Button x:Name="btnAddChord" Content="Add new chord" Width="250" Height="30" Click="btnAddMoveChord_Click"/>
+                <Button x:Name="btnAddElement" Content="Add new chord" Width="250" Height="30" Click="btnAddMoveElement_Click"/>
                 <Button x:Name="btnRmLast" Click="btnRmLast_Click" Content="Remove last" Width="250" Height="30"/>
             </WrapPanel>
         </StackPanel>

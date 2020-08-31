@@ -29,7 +29,7 @@ namespace Chord_Dictator
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<Chord> chords = new List<Chord>();
+        List<Element> elements = new List<Element>();
         public DispatcherTimer timer = new DispatcherTimer();
         bool mute = false;
         string dfp = "App Files/Dictionaries/defDict.txt";
@@ -46,12 +46,12 @@ namespace Chord_Dictator
             WriteToLog("Program launched.", "MainWindowConstructor");
             dfp = GetLastDictionary();
         }
-        struct Chord
+        struct Element
         {
             public string name;
             public string imagePath;
             public string soundPath;
-            public Chord(string n, string i, string s)
+            public Element(string n, string i, string s)
             {
                 name = n;
                 imagePath = i;
@@ -191,13 +191,13 @@ namespace Chord_Dictator
                 timer.Stop();
                 timer.Interval = TimeSpan.FromSeconds(StrToInt(tbDelay.Text));
                 CreateIfNoDf();
-                string[] rawChords = File.ReadAllLines(dfp);
-                string[] currChord;
-                chords.Clear();
-                for (int i = 0; i < rawChords.Length; i++)
+                string[] rawElements = File.ReadAllLines(dfp);
+                string[] currElement;
+                elements.Clear();
+                for (int i = 0; i < rawElements.Length; i++)
                 {
-                    currChord = rawChords[i].Split('>');
-                    chords.Add(new Chord(currChord[0], currChord[1], currChord[2]));
+                    currElement = rawElements[i].Split('>');
+                    elements.Add(new Element(currElement[0], currElement[1], currElement[2]));
                 }
                 WriteToLog("New session started.", "btnStart_Click");
                 try
@@ -244,7 +244,7 @@ namespace Chord_Dictator
         }
         void Start(object sender, EventArgs e)
         {
-            int randomIndex = new Random().Next(0, chords.Count);
+            int randomIndex = new Random().Next(0, elements.Count);
             if (File.ReadAllLines(dfp).Length <= alreadyShown.Count && alreadyShown.Count != 0)
             {
                 Dispatcher.Invoke(() => timer.Stop());
@@ -255,24 +255,24 @@ namespace Chord_Dictator
             }
             while (!Unique(randomIndex))
             {
-                randomIndex = new Random().Next(0, chords.Count);
+                randomIndex = new Random().Next(0, elements.Count);
             }
             alreadyShown.Add(randomIndex);
             try
             {
-                imgChord.Source = new BitmapImage(new Uri(chords[randomIndex].imagePath));
+                imgElement.Source = new BitmapImage(new Uri(elements[randomIndex].imagePath));
             }
             catch (Exception ex)
             {
                 WriteToLog("Failed to load image.", "Start", ex.Message);
             }
-            tbChordName.Text = chords[randomIndex].name;
+            tbElementName.Text = elements[randomIndex].name;
             try
             {
                 if (!mute)
                 {
                     MediaPlayer mp = new MediaPlayer();
-                    mp.Open(new Uri(chords[randomIndex].soundPath, UriKind.RelativeOrAbsolute));
+                    mp.Open(new Uri(elements[randomIndex].soundPath, UriKind.RelativeOrAbsolute));
                     mp.Play();
                     //SoundPlayer player = new SoundPlayer();
                     //player.Play();
@@ -280,7 +280,7 @@ namespace Chord_Dictator
             }
             catch (Exception ex)
             {
-                WriteToLog("Failed to load sound.", "Start", ex.Message + " Path: " + chords[randomIndex].soundPath);
+                WriteToLog("Failed to load sound.", "Start", ex.Message + " Path: " + elements[randomIndex].soundPath);
             }
         }
         private void btnGoToAdd_Click(object sender, RoutedEventArgs e)
@@ -338,7 +338,7 @@ namespace Chord_Dictator
         #region Test
         void StartPortable(object sender, EventArgs e)
         {
-            int randomIndex = new Random().Next(0, chords.Count);
+            int randomIndex = new Random().Next(0, elements.Count);
             if (File.ReadAllLines(dfp).Length <= alreadyShown.Count && alreadyShown.Count != 0)
             {
                 Dispatcher.Invoke(() => timer.Stop());
@@ -349,24 +349,24 @@ namespace Chord_Dictator
             }
             while (!Unique(randomIndex))
             {
-                randomIndex = new Random().Next(0, chords.Count);
+                randomIndex = new Random().Next(0, elements.Count);
             }
             alreadyShown.Add(randomIndex);
             try
             {
-                imgChord.Source = ByteToBitmap(Base64ToBytes(chords[randomIndex].imagePath));
+                imgElement.Source = ByteToBitmap(Base64ToBytes(elements[randomIndex].imagePath));
             }
             catch (Exception ex)
             {
                 WriteToLog("Failed to load image.", "StartPortable", ex.Message);
             }
-            tbChordName.Text = chords[randomIndex].name;
+            tbElementName.Text = elements[randomIndex].name;
             try
             {
                 if (!mute)
                 {
                     MediaPlayer mp = new MediaPlayer();
-                    mp.Open(new Uri(chords[randomIndex].soundPath, UriKind.RelativeOrAbsolute));
+                    mp.Open(new Uri(elements[randomIndex].soundPath, UriKind.RelativeOrAbsolute));
                     mp.Play();
                 }
             }

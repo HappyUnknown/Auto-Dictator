@@ -26,6 +26,8 @@ namespace Chord_Dictator
         string dfp;
         string defaultImage;
         string defaultAudio;
+        string audiopath = "App Files/Audio/";
+        string imagepath = "App Files/Images/";
         public AddWindow()
         {
             InitializeComponent();
@@ -73,8 +75,8 @@ namespace Chord_Dictator
                 ofd.Filter = "PNG Picture|*.png|JPEG Picture|*.jpeg|JPG Picture|*.jpg|All|*.*";
                 if (ofd.ShowDialog() == true)
                 {
-                    imgChord.Source = new BitmapImage(new Uri(ofd.FileName));
-                    tbChordImgPath.Text = ofd.FileName;
+                    imgElement.Source = new BitmapImage(new Uri(ofd.FileName));
+                    tbElementImgPath.Text = ofd.FileName;
                 }
             }
             catch (Exception ex)
@@ -98,10 +100,9 @@ namespace Chord_Dictator
         {
             for (int i = path.Length - 1; i >= 0; i--)
             {
-                MessageBox.Show(path[i].ToString());
                 if (path[i] == '/')
                 {
-                    return path.Substring(0, i);
+                    return path.Substring(0, i) + "/";
                 }
             }
             return "NO_PATH";
@@ -123,40 +124,40 @@ namespace Chord_Dictator
                 File.AppendAllText(log, "Failed to connect sound: " + DateTime.Now + "-> " + ex.Message + Environment.NewLine);
             }
         }
-        private void btnAddChord_Click(object sender, RoutedEventArgs e)
+        private void btnAddElement_Click(object sender, RoutedEventArgs e)
         {
-            AddChord(tbName.Text, tbSoundPath.Text, tbChordImgPath.Text);
+            AddElement(tbName.Text.Trim(' '), tbSoundPath.Text, tbElementImgPath.Text);
         }
-        private void btnAddMoveChord_Click(object sender, RoutedEventArgs e)
+        private void btnAddMoveElement_Click(object sender, RoutedEventArgs e)
         {
             string aupath = "-";
             string impath = "-";
             try
             {
-                aupath = GetFileHome(defaultAudio) + GetFileName(tbSoundPath.Text);
-                impath = GetFileHome(defaultImage) + GetFileName(tbChordImgPath.Text);
+                aupath = audiopath + GetFileName(tbSoundPath.Text);
+                impath = imagepath + GetFileName(tbElementImgPath.Text);
                 try
                 {
                     File.Copy(tbSoundPath.Text, aupath);
-                    File.Copy(tbChordImgPath.Text, impath);
-                    AddChord(tbName.Text, aupath, impath);
+                    File.Copy(tbElementImgPath.Text, impath);
+                    AddElement(tbName.Text, aupath, impath);
                 }
                 catch (Exception ex)
                 {
-                    WriteToLog("Troubles during moving files to program folder.", "btnAddMoveChord_Click", ex.Message);
+                    WriteToLog("Troubles during moving files to program folder.", "btnAddMoveElement_Click", ex.Message);
                     MessageBox.Show("Error during add operation (check logs).");
                 }
-                WriteToLog("New image path (copy) : " + aupath, "btnAddMoveChord_Click");
-                WriteToLog("New audio path (copy) : " + impath, "btnAddMoveChord_Click");
+                WriteToLog("New image path (copy) : " + aupath, "btnAddMoveElement_Click");
+                WriteToLog("New audio path (copy) : " + impath, "btnAddMoveElement_Click");
             }
             catch (Exception ex)
             {
-                WriteToLog("Troubles during building new paths.(" + aupath + "," + impath + ")", "btnAddMoveChord_Click", ex.Message);
+                WriteToLog("Troubles during building new paths.(" + aupath + "," + impath + ")", "btnAddMoveElement_Click", ex.Message);
                 MessageBox.Show("Error during add operation (check logs).");
             }
 
         }
-        void AddChord(string name, string chordpath, string imagepath)
+        void AddElement(string name, string Elementpath, string imagepath)
         {
             try
             {
@@ -165,37 +166,37 @@ namespace Chord_Dictator
                     MessageBox.Show("No name signed. Rename please.");
                     return;
                 }
-                if (chordpath == "")
+                if (Elementpath == "")
                 {
-                    chordpath = defaultAudio;
+                    Elementpath = defaultAudio;
                     MessageBox.Show("No sound signed.");
                 }
-                if (imgChord.Source == null || tbChordImgPath.Text == "")
+                if (imgElement.Source == null || tbElementImgPath.Text == "")
                 {
                     imagepath = defaultImage;
                     MessageBox.Show("No image signed.");
                 }
 
-                if (!name.Contains('>') && !imagepath.Contains('>') && !chordpath.Contains('>'))
+                if (!name.Contains('>') && !imagepath.Contains('>') && !Elementpath.Contains('>'))
                 {
-                    File.AppendAllText(dfp, name + ">" + imagepath + ">" + chordpath + Environment.NewLine);
+                    File.AppendAllText(dfp, name + ">" + imagepath + ">" + Elementpath + Environment.NewLine);
                     MessageBox.Show("Added \"" + name + "\" element. Path: " + dfp);
-                    imgChord.Source = null;
+                    imgElement.Source = null;
                     tbName.Text = string.Empty;
                     tbSoundPath.Text = string.Empty;
-                    tbChordImgPath.Text = string.Empty;
-                    WriteToLog("Added new element \"" + name + "\".", "AddChord");
+                    tbElementImgPath.Text = string.Empty;
+                    WriteToLog("Added new element \"" + name + "\".", "AddElement");
                 }
                 else
                 {
                     MessageBox.Show("\">\" program symbol used. Try removing it.");
-                    WriteToLog("Program symbol used in dictionary addition.", "AddChord");
+                    WriteToLog("Program symbol used in dictionary addition.", "AddElement");
                 }
                 Close();
             }
             catch (Exception ex)
             {
-                WriteToLog("Failed to add chord.", "AddChord", ex.Message, "Try recreating initial dictionary or trying again");
+                WriteToLog("Failed to add Element.", "AddElement", ex.Message, "Try recreating initial dictionary or trying again");
                 CreateIfNoDl();
             }
         }
@@ -207,7 +208,7 @@ namespace Chord_Dictator
                 if (MessageBox.Show("Do you want to remove last element?", "Removing last", MessageBoxButton.YesNo) == MessageBoxResult.Yes && File.ReadAllLines(dfp).Length > 0)
                 {
                     List<string> content = File.ReadAllLines(dfp).ToList();
-                    MessageBox.Show("Last chord removed. - " + content[content.Count - 1].Split('>')[0]);
+                    MessageBox.Show("Last element removed. - " + content[content.Count - 1].Split('>')[0]);
                     content.RemoveAt(content.Count - 1);
                     File.WriteAllLines(dfp, content.ToArray());
                 }
@@ -220,7 +221,7 @@ namespace Chord_Dictator
             }
         }
         #region TEST
-        void AddChordPortable()
+        void AddElementPortable()
         {
             try
             {
@@ -235,7 +236,7 @@ namespace Chord_Dictator
                     MessageBox.Show("No sound signed.");
                     return;
                 }
-                if (imgChord.Source == null || tbChordImgPath.Text == "")
+                if (imgElement.Source == null || tbElementImgPath.Text == "")
                 {
                     MessageBox.Show("No image signed.");
                     return;
@@ -244,30 +245,30 @@ namespace Chord_Dictator
                 {
                     if (!tbName.Text.Contains('>'))
                     {
-                        File.AppendAllText(dfp, tbName.Text + ">" + FileToBase64(tbChordImgPath.Text) + ">" + FileToBase64(tbSoundPath.Text) + Environment.NewLine);
-                        MessageBox.Show("Added \"" + tbName.Text + "\" chord.");
-                        imgChord.Source = null;
+                        File.AppendAllText(dfp, tbName.Text + ">" + FileToBase64(tbElementImgPath.Text) + ">" + FileToBase64(tbSoundPath.Text) + Environment.NewLine);
+                        MessageBox.Show("Added \"" + tbName.Text + "\" Element.");
+                        imgElement.Source = null;
                         tbName.Text = string.Empty;
                         tbSoundPath.Text = string.Empty;
-                        tbChordImgPath.Text = string.Empty;
+                        tbElementImgPath.Text = string.Empty;
                     }
                     else
                     {
-                        WriteToLog("Failed to add chord due to \">\" was used.", "AddChordPortable");
+                        WriteToLog("Failed to add element due to \">\" was used.", "AddElementPortable");
                         MessageBox.Show("\">\" program symbol used. Try removing it.");
                     }
                 }
             }
             catch (Exception ex)
             {
-                WriteToLog("Failed to add chord.", "AddChordPortable", ex.Message, "Try recreating initial dictionary or trying again");
+                WriteToLog("Failed to add Element.", "AddElementPortable", ex.Message, "Try recreating initial dictionary or trying again");
                 CreateIfNoDl();
             }
             Close();
         }
         string ImageToBase64()
         {
-            BitmapImage image = (BitmapImage)imgChord.Source;
+            BitmapImage image = (BitmapImage)imgElement.Source;
             var converter = new ImageSourceConverter();
             return converter.ConvertToString(image);
         }
