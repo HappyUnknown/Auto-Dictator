@@ -150,8 +150,8 @@ namespace Chord_Dictator
                 impath = imagepath + GetFileName(tbElementImgPath.Text);
                 try
                 {
-                    File.Copy(tbSoundPath.Text, aupath);
-                    File.Copy(tbElementImgPath.Text, impath);
+                    if (!File.Exists(aupath)) File.Copy(tbSoundPath.Text, aupath);
+                    if (!File.Exists(impath)) File.Copy(tbElementImgPath.Text, impath);
                     AddElement(tbName.Text, aupath, impath);
                 }
                 catch (Exception ex)
