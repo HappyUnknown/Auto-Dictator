@@ -1,7 +1,2 @@
-[31.08.2020 18:13:30] MainWindowConstructor() -> Program launched.
-[31.08.2020 18:13:30] GetLastDictionary() -> LastDictionary setting found.
-[31.08.2020 18:13:35] AddWindowConstructor() -> Editing started.
-[31.08.2020 18:13:35] btnGoToAdd_Click() -> Opened add/remove window.
-[31.08.2020 18:13:53] AddElement() -> Added new element "ffffffffff".
-[31.08.2020 18:13:53] btnAddMoveElement_Click() -> New image path (copy) : App Files/Audio/elfen 1.mp3
-[31.08.2020 18:13:53] btnAddMoveElement_Click() -> New audio path (copy) : App Files/Images/Anime-akiyama-yukari-Girls-und-Panzer-Anime-Ero-Swim-6023022.png
+[31.08.2020 20:55:28] MainWindowConstructor() -> Program launched.
+[31.08.2020 20:55:29] GetLastDictionary() -> LastDictionary setting found.

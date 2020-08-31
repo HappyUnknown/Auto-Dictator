@@ -51,6 +51,13 @@ namespace Chord_Dictator
             if (tip.Length > 0) File.AppendAllText(log, "[Tip: " + tip.TrimEnd('.') + "]");
             File.AppendAllText(log, Environment.NewLine);
         }
+        bool FileOk()
+        {
+            string[] filelines = File.ReadAllLines(dfp);
+            foreach (string line in filelines)
+                if (line.Split('>').Length != 3) return false;
+            return true;
+        }
         void CreateIfNoDl()
         {
             if (!Directory.Exists("App Files"))
@@ -126,6 +133,7 @@ namespace Chord_Dictator
         }
         private void btnAddElement_Click(object sender, RoutedEventArgs e)
         {
+            if (!FileOk()) WriteToLog("Row must contain 2 '>' [Path" + dfp + "]");
             AddElement(tbName.Text.Trim(' '), tbSoundPath.Text, tbElementImgPath.Text);
         }
         private void btnAddMoveElement_Click(object sender, RoutedEventArgs e)
@@ -205,6 +213,8 @@ namespace Chord_Dictator
 
             try
             {
+                if (!FileOk()) WriteToLog("Row must contain 2 '>' [Path" + dfp + "]");
+
                 if (MessageBox.Show("Do you want to remove last element?", "Removing last", MessageBoxButton.YesNo) == MessageBoxResult.Yes && File.ReadAllLines(dfp).Length > 0)
                 {
                     List<string> content = File.ReadAllLines(dfp).ToList();

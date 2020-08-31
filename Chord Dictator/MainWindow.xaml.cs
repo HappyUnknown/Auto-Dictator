@@ -73,6 +73,13 @@ namespace Chord_Dictator
             }
             return num;
         }
+        bool FileOk()
+        {
+            string[] filelines = File.ReadAllLines(dfp);
+            foreach (string line in filelines)
+                if (line.Split('>').Length != 3) return false;
+            return true;
+        }
         void CreateIfNoDf()
         {
             if (!Directory.Exists("App Files"))
@@ -88,11 +95,12 @@ namespace Chord_Dictator
                 }
             }
         }
-        void WriteToLog(string message, string functionName, string exmsg = "", string tip = "")
+        void WriteToLog(string message, string functionName = "", string exmsg = "", string tip = "")
         {
             if (!File.Exists(log)) File.Create(log).Close();
-            File.AppendAllText(log, "[" + DateTime.Now + "] " + functionName + "() -> ");
-            File.AppendAllText(log, message);
+            File.AppendAllText(log, "[" + DateTime.Now + "] ");
+            if (functionName.Length > 0) File.AppendAllText(log, functionName + "()");
+            File.AppendAllText(log, " -> " + message);
             if (exmsg.Length > 0) File.AppendAllText(log, " (" + exmsg + ") ");
             if (tip.Length > 0) File.AppendAllText(log, "[Tip: " + tip.TrimEnd('.') + "]");
             File.AppendAllText(log, Environment.NewLine);
@@ -188,6 +196,7 @@ namespace Chord_Dictator
         {
             try
             {
+                if (!FileOk()) WriteToLog("Row must contain 2 '>' [Path" + dfp + "]");
                 timer.Stop();
                 timer.Interval = TimeSpan.FromSeconds(StrToInt(tbDelay.Text));
                 CreateIfNoDf();
@@ -300,6 +309,8 @@ namespace Chord_Dictator
                     if (ofd.FileName.Substring(ofd.FileName.Length - 4, 4) == ".txt")
                     {
                         dfp = ofd.FileName;
+                        if (!FileOk()) WriteToLog("Row must contain 2 '>' [Path" + dfp + "]");
+
                         MessageBox.Show("Dictionary file changed to " + dfp);
                         WriteToLog("Dictionary file changed to " + dfp, "btnChangeInit_Click");
                         btnGoToAdd.ToolTip = "All added items will be saved to " + dfp;
