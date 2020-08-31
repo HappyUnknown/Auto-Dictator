@@ -46,7 +46,7 @@ namespace Chord_Dictator
             if (!File.Exists(log)) File.Create(log).Close();
             File.AppendAllText(log, "[" + DateTime.Now + "] ");
             if (functionName.Length > 0) File.AppendAllText(log, functionName + "()");
-            File.AppendAllText(log, " -> " + message);
+            File.AppendAllText(log, "-> " + message);
             if (exmsg.Length > 0) File.AppendAllText(log, " (" + exmsg + ") ");
             if (tip.Length > 0) File.AppendAllText(log, "[Tip: " + tip.TrimEnd('.') + "]");
             File.AppendAllText(log, Environment.NewLine);

@@ -1,7 +1,6 @@
 D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\Chord Dictator.exe.config
 D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\Chord Dictator.exe
 D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\Chord Dictator.pdb
-D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\obj\Debug\Chord Dictator.csprojAssemblyReference.cache
 D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\obj\Debug\MainWindow.g.cs
 D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\obj\Debug\App.g.cs
 D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\obj\Debug\Chord Dictator_MarkupCompile.cache
@@ -15,3 +14,4 @@ D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\
 D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\obj\Debug\Chord Dictator.pdb
 D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\obj\Debug\AddWindow.g.cs
 D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\obj\Debug\AddWindow.baml
+D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\obj\Debug\Chord Dictator.csprojAssemblyReference.cache

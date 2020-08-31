@@ -1,2 +1,5 @@
-[31.08.2020 20:55:28] MainWindowConstructor() -> Program launched.
-[31.08.2020 20:55:29] GetLastDictionary() -> LastDictionary setting found.
+[31.08.2020 22:07:24] MainWindowConstructor() -> Program launched.
+[31.08.2020 22:07:24] GetLastDictionary() -> LastDictionary setting found.
+[31.08.2020 22:07:34]  -> Row must contain 2 '>' [Path: App Files/Dictionaries/HomeWork-2_1598712524.txt]
+[31.08.2020 22:07:37] btnChangeInit_Click() -> Dictionary file changed to App Files/Dictionaries/HomeWork-2_1598712524.txt
+[31.08.2020 22:07:38] btnChangeInit_Click() -> Last dictionary set (App Files/Dictionaries/HomeWork-2_1598712524.txt)

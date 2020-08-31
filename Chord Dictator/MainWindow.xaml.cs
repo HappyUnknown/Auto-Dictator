@@ -37,6 +37,7 @@ namespace Chord_Dictator
         string set = "App Files/Initial Files/settings.txt";
         string defaultImage = "App Files/Initial Files/defimage.png";
         string defaultAudio = "App Files/Initial Files/defaudio.wav";
+        string dictionaryPath = "App Files/Dictionaries/";
         List<int> alreadyShown = new List<int>();
         public MainWindow()
         {
@@ -104,7 +105,7 @@ namespace Chord_Dictator
             if (!File.Exists(log)) File.Create(log).Close();
             File.AppendAllText(log, "[" + DateTime.Now + "] ");
             if (functionName.Length > 0) File.AppendAllText(log, functionName + "()");
-            File.AppendAllText(log, " -> " + message);
+            File.AppendAllText(log, "-> " + message);
             if (exmsg.Length > 0) File.AppendAllText(log, " (" + exmsg + ") ");
             if (tip.Length > 0) File.AppendAllText(log, "[Tip: " + tip.TrimEnd('.') + "]");
             File.AppendAllText(log, Environment.NewLine);
@@ -303,6 +304,55 @@ namespace Chord_Dictator
             window.ShowDialog();
         }
         private void btnChangeInit_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                OpenFileDialog ofd = new OpenFileDialog();
+                ofd.ShowDialog();
+                if (ofd.FileName.Length > 3)
+                {
+                    if (ofd.FileName.Substring(ofd.FileName.Length - 4, 4) == ".txt")
+                    {
+                        dfp = dictionaryPath + GetFileName(ofd.FileName);
+                        File.Copy(ofd.FileName, dfp);
+                        FileOk(true);
+
+                        MessageBox.Show("Dictionary file changed to " + dfp);
+                        WriteToLog("Dictionary file changed to " + dfp, "btnChangeInit_Click");
+                        btnGoToAdd.ToolTip = "All added items will be saved to " + dfp;
+                        if (!File.Exists(set)) File.Create(set).Close();
+                        try
+                        {
+                            if (EditSettings("LastDictionary", dfp))
+                            {
+                                EditSettings("LastDictionary", dfp);
+                                WriteToLog("Last dictionary set (" + dfp + ")", "btnChangeInit_Click");
+                            }
+                            else
+                            {
+                                AddSetting("LastDictionary", dfp);
+                                WriteToLog("Last dictionary set, but created LastDirectory parameter first (" + dfp + ")", "btnChangeInit_Click");
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            WriteToLog("Initial dictionary wasn't changed", "btnChangeInit_Click", ex.Message, "Try choosing txt file.");
+                        }
+                    }
+                    else
+                    {
+                        WriteToLog("Failed to change dictionary. File type does not match.", "btnChangeInit_Click");
+                        MessageBox.Show("File type does not match. Choose txt.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                WriteToLog("Failed to change dictionary.", "btnChangeInit_Click", ex.Message);
+            }
+        }
+        private void btnChangeMoveInit_Click(object sender, RoutedEventArgs e)
         {
             try
             {
