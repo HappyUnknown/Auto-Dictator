@@ -314,7 +314,7 @@ namespace Chord_Dictator
                     if (ofd.FileName.Substring(ofd.FileName.Length - 4, 4) == ".txt")
                     {
                         dfp = dictionaryPath + GetFileName(ofd.FileName);
-                        if (!File.Exists(dfp)) File.Copy(ofd.FileName, dfp);
+                        if (!File.Exists(dfp)) File.Copy(ofd.FileName, dfp); else { MessageBox.Show("Check logs."); WriteToLog("File already exists in root folder. [Tip: Delete it or rename.]"); }
                         FileOk(true);
 
                         MessageBox.Show("Dictionary file is now " + dfp);
@@ -363,7 +363,7 @@ namespace Chord_Dictator
                     if (ofd.FileName.Substring(ofd.FileName.Length - 4, 4) == ".txt")
                     {
                         dfp = dictionaryPath + GetFileName(ofd.FileName);
-                        if (!File.Exists(dfp)) File.Copy(ofd.FileName, dfp);
+                        if (!File.Exists(dfp)) File.Copy(ofd.FileName, dfp); else { MessageBox.Show("Check logs."); WriteToLog("File already exists in root folder. [Tip: Delete it or rename.]"); }
                         FileOk(true);
 
                         MessageBox.Show("Dictionary file is now " + dfp);

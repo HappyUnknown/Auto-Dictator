@@ -14,4 +14,3 @@ D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\
 D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\obj\Debug\Chord Dictator.pdb
 D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\obj\Debug\AddWindow.g.cs
 D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\obj\Debug\AddWindow.baml
-D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\obj\Debug\Chord Dictator.csprojAssemblyReference.cache

@@ -150,8 +150,8 @@ namespace Chord_Dictator
                 impath = imagepath + GetFileName(tbElementImgPath.Text);
                 try
                 {
-                    if (!File.Exists(aupath)) File.Copy(tbSoundPath.Text, aupath);
-                    if (!File.Exists(impath)) File.Copy(tbElementImgPath.Text, impath);
+                    if (!File.Exists(aupath)) File.Copy(tbSoundPath.Text, aupath); else { MessageBox.Show("Check logs."); WriteToLog("File already exists in root folder. [Tip: Delete it or rename.]"); }
+                    if (!File.Exists(impath)) File.Copy(tbElementImgPath.Text, impath); else { MessageBox.Show("Check logs."); WriteToLog("File already exists in root folder. [Tip: Delete it or rename.]"); }
                     AddElement(tbName.Text, aupath, impath);
                 }
                 catch (Exception ex)
