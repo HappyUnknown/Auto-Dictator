@@ -1,5 +1,56 @@
-[31.08.2020 22:59:49] MainWindowConstructor()-> Program launched.
-[31.08.2020 22:59:49] GetLastDictionary()-> LastDictionary setting found.
-[31.08.2020 22:59:55] -> File already exists in root folder. [Tip: Delete it or rename.]
-[31.08.2020 22:59:57] btnChangeInit_Click()-> Dictionary file is now App Files/Dictionaries/chords.txt
-[31.08.2020 22:59:57] btnChangeInit_Click()-> Last dictionary set (App Files/Dictionaries/chords.txt)
+[31.08.2020 23:39:41] MainWindowConstructor()-> Program launched.
+[31.08.2020 23:39:41] GetLastDictionary()-> LastDictionary setting found.
+[31.08.2020 23:39:44] AddWindowConstructor()-> Editing started.
+[31.08.2020 23:39:45] btnGoToAdd_Click()-> Opened add/remove window.
+[31.08.2020 23:40:21] -> File chosen was located in root folder, so it wasn't copied. [Path: D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files\Images\c.jpg]
+[31.08.2020 23:40:21] -> File chosen was located in root folder, so it wasn't copied. [Path: D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files\Images\c.jpg]
+[31.08.2020 23:40:22] AddElement()-> Added new element "C (ДО)".
+[31.08.2020 23:40:23] btnAddMoveElement_Click()-> New image path (copy) : D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files/Audio/С chordbank.wav
+[31.08.2020 23:40:23] btnAddMoveElement_Click()-> New audio path (copy) : D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files/Images/c.jpg
+[31.08.2020 23:40:23] StrToInt()-> Failed to parse string "" to int.
+[31.08.2020 23:40:23] btnStart_Click()-> New session started.
+[31.08.2020 23:40:25] btnStart_Click()-> New session started.
+[31.08.2020 23:40:28] Start()-> Dictation finished successfuly.
+[31.08.2020 23:40:30] btnStart_Click()-> New session started.
+[31.08.2020 23:40:33] Start()-> Dictation finished successfuly.
+[31.08.2020 23:41:29] AddWindowConstructor()-> Editing started.
+[31.08.2020 23:41:29] btnGoToAdd_Click()-> Opened add/remove window.
+[31.08.2020 23:42:19] -> File chosen was located in root folder, so it wasn't copied. [Path: D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files\Images\d.jpg]
+[31.08.2020 23:42:19] -> File chosen was located in root folder, so it wasn't copied. [Path: D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files\Images\d.jpg]
+[31.08.2020 23:42:22] AddElement()-> Added new element "D (Ре)".
+[31.08.2020 23:42:22] btnAddMoveElement_Click()-> New image path (copy) : D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files/Audio/D chordbank.wav
+[31.08.2020 23:42:22] btnAddMoveElement_Click()-> New audio path (copy) : D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files/Images/d.jpg
+[31.08.2020 23:42:24] btnStart_Click()-> New session started.
+[31.08.2020 23:42:28] Start()-> Dictation finished successfuly.
+[31.08.2020 23:42:32] AddWindowConstructor()-> Editing started.
+[31.08.2020 23:42:32] btnGoToAdd_Click()-> Opened add/remove window.
+[31.08.2020 23:43:12] -> File chosen was located in root folder, so it wasn't copied. [Path: D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files\Images\em.jpg]
+[31.08.2020 23:43:12] -> File chosen was located in root folder, so it wasn't copied. [Path: D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files\Images\em.jpg]
+[31.08.2020 23:43:13] AddElement()-> Added new element "Em (Ля-минор)".
+[31.08.2020 23:43:14] btnAddMoveElement_Click()-> New image path (copy) : D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files/Audio/Em chordbank.wav
+[31.08.2020 23:43:14] btnAddMoveElement_Click()-> New audio path (copy) : D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files/Images/em.jpg
+[31.08.2020 23:44:38] btnStart_Click()-> New session started.
+[31.08.2020 23:44:43] Start()-> Dictation finished successfuly.
+[31.08.2020 23:44:44] btnStart_Click()-> New session started.
+[31.08.2020 23:44:49] Start()-> Dictation finished successfuly.
+[31.08.2020 23:44:53] AddWindowConstructor()-> Editing started.
+[31.08.2020 23:44:53] btnGoToAdd_Click()-> Opened add/remove window.
+[31.08.2020 23:45:50] -> File chosen was located in root folder, so it wasn't copied. [Path: D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files\Images\g.jpg]
+[31.08.2020 23:45:50] -> File chosen was located in root folder, so it wasn't copied. [Path: D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files\Images\g.jpg]
+[31.08.2020 23:45:51] AddElement()-> Added new element "G (Фа)".
+[31.08.2020 23:45:51] btnAddMoveElement_Click()-> New image path (copy) : D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files/Audio/G chordbank.wav
+[31.08.2020 23:45:51] btnAddMoveElement_Click()-> New audio path (copy) : D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files/Images/g.jpg
+[31.08.2020 23:46:01] btnChangeInit_Click()-> Failed to change dictionary. File type does not match.
+[31.08.2020 23:46:07] AddWindowConstructor()-> Editing started.
+[31.08.2020 23:46:07] btnGoToAdd_Click()-> Opened add/remove window.
+[31.08.2020 23:53:12] -> File chosen was located in root folder, so it wasn't copied. [Path: D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files\Images\e.png]
+[31.08.2020 23:53:12] -> File chosen was located in root folder, so it wasn't copied. [Path: D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files\Images\e.png]
+[31.08.2020 23:53:14] btnAddMoveElement_Click()-> New image path (copy) : D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files/Audio/E chordbank.wav
+[31.08.2020 23:53:14] btnAddMoveElement_Click()-> New audio path (copy) : D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files/Images/e.png
+[31.08.2020 23:53:55] -> File chosen was located in root folder, so it wasn't copied. [Path: D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files\Images\e.png]
+[31.08.2020 23:53:55] -> File chosen was located in root folder, so it wasn't copied. [Path: D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files\Images\e.png]
+[31.08.2020 23:53:56] AddElement()-> Added new element "E (Ми)".
+[31.08.2020 23:53:56] btnAddMoveElement_Click()-> New image path (copy) : D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files/Audio/E chordbank.wav
+[31.08.2020 23:53:56] btnAddMoveElement_Click()-> New audio path (copy) : D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files/Images/e.png
+[31.08.2020 23:54:01] btnStart_Click()-> New session started.
+[31.08.2020 23:54:09] Start()-> Dictation finished successfuly.

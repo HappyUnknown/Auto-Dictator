@@ -283,11 +283,11 @@ namespace Chord_Dictator
             alreadyShown.Add(randomIndex);
             try
             {
-                imgElement.Source = new BitmapImage(new Uri(elements[randomIndex].imagePath));
+                imgElement.Source = new BitmapImage(new Uri(elements[randomIndex].imagePath, UriKind.Absolute));
             }
             catch (Exception ex)
             {
-                WriteToLog("Failed to load image.", "Start", ex.Message);
+                WriteToLog("Failed to load image " + elements[randomIndex].imagePath, "Start", ex.Message);
             }
             tbElementName.Text = elements[randomIndex].name;
             try
@@ -323,7 +323,7 @@ namespace Chord_Dictator
                     if (ofd.FileName.Substring(ofd.FileName.Length - 4, 4) == ".txt")
                     {
                         dfp = dictionaryPath + GetFileName(ofd.FileName);
-                        if (!File.Exists(dfp)) File.Copy(ofd.FileName, dfp); else { MessageBox.Show("Check logs."); WriteToLog("File chosen was located in root folder, so it wasn't copied. [Path: " + ofd.FileName + "]"); }
+                        if (!File.Exists(dfp)) File.Copy(ofd.FileName, dfp); else { WriteToLog("File chosen was located in root folder, so it wasn't copied. [Path: " + ofd.FileName + "]"); }
                         FileOk(true);
                         RemoveEmptyEntries();
 
@@ -373,7 +373,7 @@ namespace Chord_Dictator
                     if (ofd.FileName.Substring(ofd.FileName.Length - 4, 4) == ".txt")
                     {
                         dfp = dictionaryPath + GetFileName(ofd.FileName);
-                        if (!File.Exists(dfp)) File.Copy(ofd.FileName, dfp); else { MessageBox.Show("Check logs."); WriteToLog("File chosen was located in root folder, so it wasn't copied. [Path: " + ofd.FileName + "]"); }
+                        if (!File.Exists(dfp)) File.Copy(ofd.FileName, dfp); else { WriteToLog("File chosen was located in root folder, so it wasn't copied. [Path: " + ofd.FileName + "]"); }
                         FileOk(true);
                         RemoveEmptyEntries();
 
