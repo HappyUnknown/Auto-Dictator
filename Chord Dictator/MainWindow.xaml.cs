@@ -73,11 +73,15 @@ namespace Chord_Dictator
             }
             return num;
         }
-        bool FileOk()
+        bool FileOk(bool writelog = false)
         {
             string[] filelines = File.ReadAllLines(dfp);
             foreach (string line in filelines)
-                if (line.Split('>').Length != 3) return false;
+                if (line.Split('>').Length != 3)
+                {
+                    if (writelog) WriteToLog("Row must contain 2 '>' [Path: " + dfp + "]");
+                    return false;
+                }
             return true;
         }
         void CreateIfNoDf()
@@ -196,7 +200,7 @@ namespace Chord_Dictator
         {
             try
             {
-                if (!FileOk()) WriteToLog("Row must contain 2 '>' [Path" + dfp + "]");
+                FileOk(true);
                 timer.Stop();
                 timer.Interval = TimeSpan.FromSeconds(StrToInt(tbDelay.Text));
                 CreateIfNoDf();
@@ -309,7 +313,7 @@ namespace Chord_Dictator
                     if (ofd.FileName.Substring(ofd.FileName.Length - 4, 4) == ".txt")
                     {
                         dfp = ofd.FileName;
-                        if (!FileOk()) WriteToLog("Row must contain 2 '>' [Path" + dfp + "]");
+                        FileOk(true);
 
                         MessageBox.Show("Dictionary file changed to " + dfp);
                         WriteToLog("Dictionary file changed to " + dfp, "btnChangeInit_Click");
