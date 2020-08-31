@@ -1,3 +1,4 @@
-[31.08.2020 22:16:20] MainWindowConstructor() -> Program launched.
-[31.08.2020 22:16:20] GetLastDictionary() -> LastDictionary setting found.
-[31.08.2020 22:16:49] btnChangeInit_Click() -> Failed to change dictionary. (Файл "App Files/Dictionaries/Chords.txt" уже существует.) 
+[31.08.2020 22:23:49] MainWindowConstructor()-> Program launched.
+[31.08.2020 22:23:49] GetLastDictionary()-> LastDictionary setting found.
+[31.08.2020 22:23:57] btnChangeInit_Click()-> Dictionary file changed to App Files/Dictionaries/Chords.txt
+[31.08.2020 22:23:57] btnChangeInit_Click()-> Last dictionary set (App Files/Dictionaries/Chords.txt)

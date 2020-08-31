@@ -317,8 +317,8 @@ namespace Chord_Dictator
                         if (!File.Exists(dfp)) File.Copy(ofd.FileName, dfp);
                         FileOk(true);
 
-                        MessageBox.Show("Dictionary file changed to " + dfp);
-                        WriteToLog("Dictionary file changed to " + dfp, "btnChangeInit_Click");
+                        MessageBox.Show("Dictionary file is now " + dfp);
+                        WriteToLog("Dictionary file is now " + dfp, "btnChangeInit_Click");
                         btnGoToAdd.ToolTip = "All added items will be saved to " + dfp;
                         if (!File.Exists(set)) File.Create(set).Close();
                         try
@@ -360,20 +360,14 @@ namespace Chord_Dictator
                 ofd.ShowDialog();
                 if (ofd.FileName.Length > 3)
                 {
-                    dfp = dictionaryPath + GetFileName(ofd.FileName);
-                    if (!File.Exists(dfp)) File.Copy(ofd.FileName, dfp);
-                    FileOk(true);
-
-                    MessageBox.Show("Dictionary file changed to " + dfp);
-                    WriteToLog("Dictionary file changed to " + dfp, "btnChangeInit_Click");
-                    btnGoToAdd.ToolTip = "All added items will be saved to " + dfp;
                     if (ofd.FileName.Substring(ofd.FileName.Length - 4, 4) == ".txt")
                     {
-                        dfp = ofd.FileName;
+                        dfp = dictionaryPath + GetFileName(ofd.FileName);
+                        if (!File.Exists(dfp)) File.Copy(ofd.FileName, dfp);
                         FileOk(true);
 
-                        MessageBox.Show("Dictionary file changed to " + dfp);
-                        WriteToLog("Dictionary file changed to " + dfp, "btnChangeInit_Click");
+                        MessageBox.Show("Dictionary file is now " + dfp);
+                        WriteToLog("Dictionary file is now " + dfp, "btnChangeInit_Click");
                         btnGoToAdd.ToolTip = "All added items will be saved to " + dfp;
                         if (!File.Exists(set)) File.Create(set).Close();
                         try
