@@ -85,20 +85,21 @@ namespace Chord_Dictator
         }
         string GetFileName(string path)
         {
-            for (int i = path.Length - 1; i >= 0; i++)
+            for (int i = path.Length - 1; i >= 0; i--)
             {
                 if (path[i] == '\\')
                 {
-                    return path.Substring(i, path.Length - i);
+                    return path.Substring(i + 1, path.Length - i - 1);
                 }
             }
             return "NO_NAME";
         }
         string GetFileHome(string path)
         {
-            for (int i = path.Length - 1; i >= 0; i++)
+            for (int i = path.Length - 1; i >= 0; i--)
             {
-                if (path[i] == '\\')
+                MessageBox.Show(path[i].ToString());
+                if (path[i] == '/')
                 {
                     return path.Substring(0, i);
                 }
@@ -118,7 +119,7 @@ namespace Chord_Dictator
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Error during add operation (check logs).");
                 File.AppendAllText(log, "Failed to connect sound: " + DateTime.Now + "-> " + ex.Message + Environment.NewLine);
             }
         }
@@ -128,18 +129,32 @@ namespace Chord_Dictator
         }
         private void btnAddMoveChord_Click(object sender, RoutedEventArgs e)
         {
-            string aupath = GetFileHome(defaultAudio) + GetFileName(tbSoundPath.Text);
-            string impath = GetFileHome(defaultImage) + GetFileName(tbChordImgPath.Text);
+            string aupath = "-";
+            string impath = "-";
             try
             {
-                File.Copy(tbSoundPath.Text, aupath);
-                File.Copy(tbSoundPath.Text, impath);
-                AddChord(tbName.Text, aupath, impath);
+                aupath = GetFileHome(defaultAudio) + GetFileName(tbSoundPath.Text);
+                impath = GetFileHome(defaultImage) + GetFileName(tbChordImgPath.Text);
+                try
+                {
+                    File.Copy(tbSoundPath.Text, aupath);
+                    File.Copy(tbChordImgPath.Text, impath);
+                    AddChord(tbName.Text, aupath, impath);
+                }
+                catch (Exception ex)
+                {
+                    WriteToLog("Troubles during moving files to program folder.", "btnAddMoveChord_Click", ex.Message);
+                    MessageBox.Show("Error during add operation (check logs).");
+                }
+                WriteToLog("New image path (copy) : " + aupath, "btnAddMoveChord_Click");
+                WriteToLog("New audio path (copy) : " + impath, "btnAddMoveChord_Click");
             }
             catch (Exception ex)
             {
-                WriteToLog("Troubles during moving files to program folder", "btnAddMoveChord_Click", ex.Message);
+                WriteToLog("Troubles during building new paths.(" + aupath + "," + impath + ")", "btnAddMoveChord_Click", ex.Message);
+                MessageBox.Show("Error during add operation (check logs).");
             }
+
         }
         void AddChord(string name, string chordpath, string imagepath)
         {

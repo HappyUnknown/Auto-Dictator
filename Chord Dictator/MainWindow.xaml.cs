@@ -286,7 +286,7 @@ namespace Chord_Dictator
         private void btnGoToAdd_Click(object sender, RoutedEventArgs e)
         {
             AddWindow window = new AddWindow(dfp, log, defaultImage, defaultAudio);
-            WriteToLog("btnGoToAdd_Click", "Opened add/remove window.");
+            WriteToLog("Opened add/remove window.", "btnGoToAdd_Click");
             window.ShowDialog();
         }
         private void btnChangeInit_Click(object sender, RoutedEventArgs e)
