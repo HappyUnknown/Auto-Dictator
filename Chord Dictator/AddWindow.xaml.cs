@@ -112,7 +112,7 @@ namespace Chord_Dictator
             try
             {
                 OpenFileDialog ofd = new OpenFileDialog();
-                ofd.Filter = "WAV Sound|*.wav|All|*.*";
+                ofd.Filter = "MP3 Sound|*.mp3|WAV Sound|*.wav|All|*.*";
                 if (ofd.ShowDialog() == true)
                 {
                     tbSoundPath.Text = ofd.FileName;
