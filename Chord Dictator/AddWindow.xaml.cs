@@ -150,8 +150,8 @@ namespace Chord_Dictator
                 impath = Environment.CurrentDirectory + "\\" + imagepath + GetFileName(tbElementImgPath.Text);
                 try
                 {
-                    if (!File.Exists(aupath)) File.Copy(tbSoundPath.Text, aupath); else { WriteToLog("File chosen was located in root folder, so it wasn't copied. [Path: " + tbSoundPath.Text + "]"); }
-                    if (!File.Exists(impath)) File.Copy(tbElementImgPath.Text, impath); else { WriteToLog("File chosen was located in root folder, so it wasn't copied. [Path: " + tbElementImgPath.Text + "]"); }
+                    if (!File.Exists(aupath) && tbSoundPath.Text.Length > 2) File.Copy(tbSoundPath.Text, aupath); else { WriteToLog("File chosen was located in root folder, so it wasn't copied. [Path: " + tbSoundPath.Text + "]"); }
+                    if (!File.Exists(impath) && tbSoundPath.Text.Length > 2) File.Copy(tbElementImgPath.Text, impath); else { WriteToLog("File chosen was located in root folder, so it wasn't copied. [Path: " + tbElementImgPath.Text + "]"); }
                     AddElement(tbName.Text, aupath, impath);
                 }
                 catch (Exception ex)

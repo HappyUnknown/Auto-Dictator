@@ -1,1 +1,1 @@
-LastDictionary>App Files/Dictionaries/chords.txt
+LastDictionary>App Files/Dictionaries/hieroglyphList.txt
