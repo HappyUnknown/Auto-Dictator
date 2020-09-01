@@ -142,12 +142,15 @@ namespace Chord_Dictator
         }
         private void btnAddMoveElement_Click(object sender, RoutedEventArgs e)
         {
-            string aupath = "-";
-            string impath = "-";
+            string aupath = "";
+            string impath = "";
             try
             {
-                aupath = Environment.CurrentDirectory + "\\" + audiopath + GetFileName(tbSoundPath.Text);
-                impath = Environment.CurrentDirectory + "\\" + imagepath + GetFileName(tbElementImgPath.Text);
+                if (tbSoundPath.Text.Length > 2) aupath = Environment.CurrentDirectory + "\\" + audiopath + GetFileName(tbSoundPath.Text).Replace('/', '\\');
+                else aupath = defaultAudio;
+                if (tbElementImgPath.Text.Length > 2) impath = Environment.CurrentDirectory + "\\" + imagepath + GetFileName(tbElementImgPath.Text).Replace('/', '\\');
+                else impath = defaultImage;
+
                 try
                 {
                     if (!File.Exists(aupath) && tbSoundPath.Text.Length > 2) File.Copy(tbSoundPath.Text, aupath); else { WriteToLog("File chosen was located in root folder, so it wasn't copied. [Path: " + tbSoundPath.Text + "]"); }
@@ -217,19 +220,27 @@ namespace Chord_Dictator
 
             try
             {
-                FileOk(true);
-
-                if (MessageBox.Show("Do you want to remove last element?", "Removing last", MessageBoxButton.YesNo) == MessageBoxResult.Yes && File.ReadAllLines(dfp).Length > 0)
+                if (File.ReadAllText(dfp).Length > 0)
                 {
-                    List<string> content = File.ReadAllLines(dfp).ToList();
-                    MessageBox.Show("Last element removed. - " + content[content.Count - 1].Split('>')[0]);
-                    content.RemoveAt(content.Count - 1);
-                    File.WriteAllLines(dfp, content.ToArray());
+                    FileOk(true);
+
+                    if (MessageBox.Show("Do you want to remove last element?", "Removing last", MessageBoxButton.YesNo) == MessageBoxResult.Yes && File.ReadAllLines(dfp).Length > 0)
+                    {
+                        List<string> content = File.ReadAllLines(dfp).ToList();
+                        MessageBox.Show("Last element removed. - " + content[content.Count - 1].Split('>')[0]);
+                        content.RemoveAt(content.Count - 1);
+                        File.WriteAllLines(dfp, content.ToArray());
+                    }
+                }
+                else
+                {
+                    WriteToLog("No elements left to remove.", "btnRmLast_Click");
+                    MessageBox.Show("No elements.");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Can't remove");
+                MessageBox.Show("Can't remove.");
                 CreateIfNoDl();
                 WriteToLog("Failed to remove last from dictionary.", "btnRmLast_Click", ex.Message, "Your dictionary file was recreated, because program did not reach it. Try again.");
             }

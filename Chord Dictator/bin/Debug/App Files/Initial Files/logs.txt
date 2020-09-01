@@ -1,15 +1,16 @@
-[01.09.2020 14:25:24] MainWindowConstructor()-> Program launched.
-[01.09.2020 14:25:24] GetLastDictionary()-> LastDictionary setting found.
-[01.09.2020 14:25:37] -> File chosen was located in root folder, so it wasn't copied. [Path: D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files\Dictionaries\hieroglyphList.txt]
-[01.09.2020 14:25:38] btnChangeInit_Click()-> Dictionary file is now App Files/Dictionaries/hieroglyphList.txt
-[01.09.2020 14:25:38] btnChangeInit_Click()-> Last dictionary set (App Files/Dictionaries/hieroglyphList.txt)
-[01.09.2020 14:25:39] StrToInt()-> Failed to parse string "" to int.
-[01.09.2020 14:25:39] btnStart_Click()-> New session started.
-[01.09.2020 14:25:45] btnStart_Click()-> New session started.
-[01.09.2020 14:25:50] Start()-> Dictation finished successfuly.
-[01.09.2020 14:25:58] AddWindowConstructor()-> Editing started.
-[01.09.2020 14:25:58] btnGoToAdd_Click()-> Opened add/remove window.
-[01.09.2020 14:27:39] btnAddMoveElement_Click()-> Troubles during moving files to program folder. (Пустое имя файла не допускается.
-Имя параметра: sourceFileName) 
-[01.09.2020 14:27:42] btnAddMoveElement_Click()-> New image path (copy) : D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files/Audio/NO_NAME
-[01.09.2020 14:27:42] btnAddMoveElement_Click()-> New audio path (copy) : D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files/Images/IMG_0650.PNG
+[01.09.2020 14:47:56] MainWindowConstructor()-> Program launched.
+[01.09.2020 14:47:56] GetLastDictionary()-> LastDictionary setting found.
+[01.09.2020 14:48:03] -> File chosen was located in root folder, so it wasn't copied. [Path: D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files\Dictionaries\hieroglyphList.txt]
+[01.09.2020 14:48:04] btnChangeInit_Click()-> Dictionary file is now App Files/Dictionaries/hieroglyphList.txt
+[01.09.2020 14:48:04] btnChangeInit_Click()-> Last dictionary set (App Files/Dictionaries/hieroglyphList.txt)
+[01.09.2020 14:48:06] AddWindowConstructor()-> Editing started.
+[01.09.2020 14:48:06] btnGoToAdd_Click()-> Opened add/remove window.
+[01.09.2020 14:48:36] -> File chosen was located in root folder, so it wasn't copied. [Path: ]
+[01.09.2020 14:48:36] -> File chosen was located in root folder, so it wasn't copied. [Path: D:\Programming\Source - Visual Studio\Author Apps\Chord Dictator\Chord Dictator\bin\Debug\App Files\Images\IMG_0650.PNG]
+[01.09.2020 14:48:44] AddElement()-> Added new element "甘(Ama)SWEETNESS".
+[01.09.2020 14:48:44] btnAddMoveElement_Click()-> New image path (copy) : D:/Programming/Source - Visual Studio/Author Apps/Chord Dictator/Chord Dictator/bin/Debug/App Files/Audio/NO_NAME
+[01.09.2020 14:48:44] btnAddMoveElement_Click()-> New audio path (copy) : D:/Programming/Source - Visual Studio/Author Apps/Chord Dictator/Chord Dictator/bin/Debug/App Files/Images/IMG_0650.PNG
+[01.09.2020 14:48:46] StrToInt()-> Failed to parse string "" to int.
+[01.09.2020 14:48:46] btnStart_Click()-> New session started.
+[01.09.2020 14:48:50] btnStart_Click()-> New session started.
+[01.09.2020 14:48:53] Start()-> Dictation finished successfuly.
